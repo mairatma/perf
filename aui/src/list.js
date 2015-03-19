@@ -1,4 +1,4 @@
-'use strinct'
+'use strict'
 
 import ComponentRegistry from 'aui/component/ComponentRegistry';
 import SoyComponent from 'aui/soy/SoyComponent';
