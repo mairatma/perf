@@ -1,0 +1,19 @@
+{namespace Templates.NestedList}
+
+/**
+ */
+{template .content}
+	{delcall NestedList.rows data="all" /}
+{/template}
+
+/**
+ * @param id
+ * @param items
+ */
+{template .rows}
+	{foreach $item in $items}
+		{delcall NestedListItem data="$item"}
+			{param id: $id + '-item' + index($item) /}
+		{/delcall}
+	{/foreach}
+{/template}
