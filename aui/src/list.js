@@ -9,6 +9,10 @@ class List extends SoyComponent {
 	constructor(opt_config) {
 		super(opt_config);
 	}
+
+	handleClick() {
+		console.log('aui click');
+	}
 }
 
 List.ATTRS = {

@@ -47,7 +47,7 @@ Templates.List.rows = function(opt_data, opt_ignored, opt_ijData) {
   var itemListLen5 = itemList5.length;
   for (var itemIndex5 = 0; itemIndex5 < itemListLen5; itemIndex5++) {
     var itemData5 = itemList5[itemIndex5];
-    output += '<div class="row"><div class="col-md-12"><span>' + soy.$$escapeHtml(itemData5) + '</span></div></div>';
+    output += '<div class="row" data-onclick="handleClick"><div class="col-md-12"><span>' + soy.$$escapeHtml(itemData5) + '</span></div></div>';
   }
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
 };
