@@ -1,0 +1,16 @@
+{namespace Templates.List}
+
+/**
+ */
+{template .content}
+	{delcall List.rows data="all" /}
+{/template}
+
+/**
+ * @param items
+ */
+{template .rows}
+	{foreach $item in $items}
+		<div class="row"><div class="col-md-12"><span>{$item}</span></div></div>
+	{/foreach}
+{/template}
