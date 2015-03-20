@@ -16,12 +16,12 @@
 <body>
     <h1>Perf - Nested - First Render</h1>
 
-    <div class="testCase col-sm-4">
+    <div class="testCase col-xs-4">
       <button id="aui" class="btn btn-primary">Run: AUI</button>
       <span id="aui-time"></span>
       <div id="aui-list"></div>
     </div>
-    <div class="testCase col-sm-4">
+    <div class="testCase col-xs-4">
       <button id="react" class="btn btn-primary">Run: React</button>
       <span id="react-time"></span>
       <div id="react-list"></div>
@@ -35,7 +35,7 @@
 
       var handlers = {
         aui: function() {
-          new aui.NestedList({items: items}).render('#aui-list');
+          aui.myList = new aui.NestedList({items: items}).render('#aui-list');
         },
         react: function() {
           React.render(
