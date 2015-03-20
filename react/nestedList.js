@@ -21,14 +21,10 @@ this.react.NestedList = React.createClass({
 });
 
 this.react.NestedListItem = React.createClass({
-  getInitialState: function () {
-    return { label: this.props.label };
-  },
-
   render: function() {
-    return React.createElement('div', { className: 'row', key: 'item' + i, onClick: this.handleClick },
-      React.createElement('div', { className: 'col-md-12 test-data' },
-        React.createElement('span', {}, this.state.label)
+    return React.createElement('div', {className: 'row', onClick: this.handleClick },
+      React.createElement('div', {className: 'col-md-12 test-data' },
+        React.createElement('span', {}, this.props.label)
       )
     );
   }

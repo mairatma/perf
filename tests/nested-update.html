@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perf - Nested - Update</title>
+
+    <link rel="stylesheet" href="./bootstrap.min.css">
+
+    <script src="../node_modules/closure-templates/soyutils.js"></script>
+    <script src="../aui/build/list.js"></script>
+
+    <script src="../react/react.js"></script>
+    <script src="../react/nestedList.js"></script>
+</head>
+<body>
+    <h1>Perf - Nested - Update</h1>
+
+    <div class="testCase col-xs-4">
+      <div id="aui" class="btn btn-primary">Run: AUI</div>
+      <span id="aui-time"></span>
+      <div id="aui-list"></div>
+    </div>
+    <div class="testCase col-xs-4">
+      <div id="react" class="btn btn-primary">Run: React</div>
+      <span id="react-time"></span>
+      <div id="react-list"></div>
+    </div>
+    <script>
+      var i;
+      var items = [];
+      for (i = 0; i < 1000; i++) {
+        items.push({label: 'Item ' + (i + 1)});
+      }
+
+      aui.myList = new aui.NestedList({items: items.concat()}).render('#aui-list');
+      react.myList = React.render(
+        React.createElement(react.NestedList, {items: items.concat()}),
+        document.getElementById('react-list')
+      );
+
+      var handlers = {
+        aui: function(newItems, done) {
+          aui.myList.items = newItems;
+          aui.myList.once('attrsChanged', function() {
+            done();
+          });
+        },
+        react: function(newItems, done) {
+          react.myList.setState({items: newItems});
+          done();
+        }
+      };
+
+      var buttons = document.querySelectorAll('.btn-primary');
+      for (i = 0; i < buttons.length; i++) {
+        attachClickListener(buttons[i]);
+      }
+
+      function attachClickListener(button) {
+        button.addEventListener('click', function() {
+          var newItems = items.concat();
+          newItems[0].label = 'My First Item';
+
+          var time = Date.now();
+          handlers[button.id](newItems, function() {
+            var timeSpan = document.getElementById(button.id + '-time');
+            timeSpan.innerHTML = (Date.now() - time) + 'ms';
+          });
+        });
+      }
+    </script>
+</body>
+</html>
