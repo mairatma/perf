@@ -17,17 +17,17 @@
     <h1>Perf - First Render</h1>
 
     <div class="testCase col-sm-4">
-      <button id="aui" class="btn btn-primary">Update: AUI</button>
+      <div id="aui" class="btn btn-primary">Update: AUI</div>
       <span id="aui-time"></span>
       <div id="aui-list"></div>
     </div>
     <div class="testCase col-sm-4">
-      <button id="soy" class="btn btn-primary">Update: Soy</button>
+      <div id="soy" class="btn btn-primary">Update: Soy</div>
       <span id="soy-time"></span>
       <div id="soy-list"></div>
     </div>
     <div class="testCase col-sm-4">
-      <button id="react" class="btn btn-primary">Update: React</button>
+      <div id="react" class="btn btn-primary">Update: React</div>
       <span id="react-time"></span>
       <div id="react-list"></div>
     </div>
@@ -67,7 +67,7 @@
         }
       };
 
-      var buttons = document.querySelectorAll('button');
+      var buttons = document.querySelectorAll('.btn-primary');
       for (i = 0; i < buttons.length; i++) {
         attachClickListener(buttons[i]);
       }
