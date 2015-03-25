@@ -89,7 +89,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentTemplate'), 'NestedLis
  * @suppress {checkTypes}
  */
 Templates.NestedListItem.__deltemplate_s90_01d1e9dd = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="nestedlistitem' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="nestedlistitem component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
   Templates.NestedListItem.__deltemplate_s90_01d1e9dd.soyTemplateName = 'Templates.NestedListItem.__deltemplate_s90_01d1e9dd';

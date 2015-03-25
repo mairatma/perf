@@ -96,7 +96,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentTemplate'), 'List', 0,
  * @suppress {checkTypes}
  */
 Templates.List.__deltemplate_s17_4ac84340 = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="list' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="list component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
   Templates.List.__deltemplate_s17_4ac84340.soyTemplateName = 'Templates.List.__deltemplate_s17_4ac84340';
