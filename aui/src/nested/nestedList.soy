@@ -9,11 +9,13 @@
 /**
  * @param id
  * @param items
+ * @param inverted
  */
 {template .rows}
-	{foreach $item in $items}
-		{delcall NestedListItem data="$item"}
-			{param id: $id + '-item' + index($item) /}
+	{for $index in range(length($items))}
+		{let $itemIndex: $inverted ? length($items) - $index - 1 : $index /}
+		{delcall NestedListItem data="$items[$itemIndex]"}
+			{param id: $id + '-item' + $itemIndex /}
 		{/delcall}
-	{/foreach}
+	{/for}
 {/template}

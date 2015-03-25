@@ -14,6 +14,9 @@ class NestedList extends SoyComponent {
 NestedList.ATTRS = {
 	items: {
 		value: []
+	},
+	inverted: {
+		value: false
 	}
 };
 

@@ -96,7 +96,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentTemplate'), 'List', 0,
  * @suppress {checkTypes}
  */
 Templates.List.__deltemplate_s17_4ac84340 = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="list ' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="list' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
   Templates.List.__deltemplate_s17_4ac84340.soyTemplateName = 'Templates.List.__deltemplate_s17_4ac84340';
@@ -144,7 +144,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('List.rows'), 'element', 0, Temp
  * @suppress {checkTypes}
  */
 Templates.List.__deltemplate_s33_24a7c50c = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('List.rows'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + Templates.List.rows(opt_data, null, opt_ijData))}), null, opt_ijData));
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('List.rows'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? Templates.List.rows(opt_data, null, opt_ijData) : ''))}), null, opt_ijData));
 };
 if (goog.DEBUG) {
   Templates.List.__deltemplate_s33_24a7c50c.soyTemplateName = 'Templates.List.__deltemplate_s33_24a7c50c';
