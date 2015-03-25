@@ -1,0 +1,31 @@
+{namespace Templates.DeeplyNestedList}
+
+/**
+ */
+{template .content}
+	{delcall DeeplyNestedList.rows data="all" /}
+{/template}
+
+/**
+ * @param id
+ * @param items
+ * @param inverted
+ */
+{template .rows}
+	{for $index in range(length($items))}
+		{let $itemIndex: $inverted ? length($items) - $index - 1 : $index /}
+		{delcall DeeplyNestedListItem}
+			{param children kind="html"}
+				{delcall DeeplyNestedListItemContent}
+					{param text: 'Item #' /}
+					{param id: $id + '-itemPrefix' + $itemIndex /}
+				{/delcall}
+				{delcall DeeplyNestedListItemContent}
+					{param text: $items[$itemIndex] /}
+					{param id: $id + '-itemLabel' + $itemIndex /}
+				{/delcall}
+			{/param}
+			{param id: $id + '-item' + $itemIndex /}
+		{/delcall}
+	{/for}
+{/template}
