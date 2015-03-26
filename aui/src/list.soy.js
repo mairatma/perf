@@ -14,6 +14,7 @@ var Templates = ComponentRegistry.Templates;
  * @hassoydelcall {ComponentElement}
  * @hassoydelcall {List}
  * @hassoydelcall {List.rows}
+ * @hassoydelcall {Surface}
  */
 
 if (typeof Templates.List == 'undefined') { Templates.List = {}; }
@@ -144,7 +145,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('List.rows'), 'element', 0, Temp
  * @suppress {checkTypes}
  */
 Templates.List.__deltemplate_s33_24a7c50c = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('List.rows'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? Templates.List.rows(opt_data, null, opt_ijData) : ''))}), null, opt_ijData));
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$escapeHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('Surface'), '', true)({content: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + soy.$$getDelegateFn(soy.$$getDelTemplateId('List.rows'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? Templates.List.rows(opt_data, null, opt_ijData) : ''))}), null, opt_ijData)), id: opt_data.id + '-rows'}, null, opt_ijData)));
 };
 if (goog.DEBUG) {
   Templates.List.__deltemplate_s33_24a7c50c.soyTemplateName = 'Templates.List.__deltemplate_s33_24a7c50c';
