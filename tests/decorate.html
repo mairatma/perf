@@ -15,24 +15,52 @@
     <script src="../react/list.js"></script>
 
     <script src="../yui/list.js"></script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["bar"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = [
+          ['Iteration', 'Alloy4', 'YUI', 'React']
+        ];
+        var options = {
+          chart: {
+            title: 'Performance'
+          },
+          bars: 'horizontal'
+        };
+        var chart = new google.charts.Bar(document.getElementById('results'));
+        window.draw = function(result) {
+          result.unshift(String(data.length - 1));
+          data.push(result);
+          chart.draw(google.visualization.arrayToDataTable(data), options);
+        };
+      }
+    </script>
 </head>
 <body>
     <h1>Perf - Decorate</h1>
+    <div id="all" class="btn btn-primary">Run: All</div>
+    <br><br>
+    <div id="results" style="width: 900px; height: 500px;"></div>
 
-    <div class="testCase col-sm-4">
-      <div id="aui" class="btn btn-primary">Run: AUI</div>
-      <span id="aui-time"></span>
-      <div id="aui-list"></div>
-    </div>
-    <div class="testCase col-sm-4">
-      <div id="yui" class="btn btn-primary">Update: YUI</div>
-      <span id="yui-time"></span>
-      <div id="yui-list"></div>
-    </div>
-    <div class="testCase col-sm-4">
-      <div id="react" class="btn btn-primary">Run: React</div>
-      <span id="react-time"></span>
-      <div id="react-list"></div>
+    <div class="col-sm-12">
+      <div class="testCase col-sm-4">
+        <div id="aui" class="btn btn-primary">Run: AUI</div>
+        <span id="aui-time"></span>
+        <div id="aui-list"></div>
+      </div>
+      <div class="testCase col-sm-4">
+        <div id="yui" class="btn btn-primary">Update: YUI</div>
+        <span id="yui-time"></span>
+        <div id="yui-list"></div>
+      </div>
+      <div class="testCase col-sm-4">
+        <div id="react" class="btn btn-primary">Run: React</div>
+        <span id="react-time"></span>
+        <div id="react-list"></div>
+      </div>
     </div>
     <script>
       YUI().use(['TestList'], function (Y) {
@@ -75,12 +103,31 @@
 
         function attachClickListener(button) {
           button.addEventListener('click', function() {
-            var time = Date.now();
-            handlers[button.id]();
-
-            var timeSpan = document.getElementById(button.id + '-time');
-            timeSpan.innerHTML = (Date.now() - time) + 'ms';
+            if (button.id === 'all') {
+              runAll();
+            } else {
+              run(button.id);
+            }
           });
+        }
+
+        function run(id) {
+          var time = Date.now();
+          handlers[id]();
+
+          var timeSpan = document.getElementById(id + '-time');
+          timeSpan.innerHTML = (Date.now() - time) + 'ms';
+          return Date.now() - time;
+        }
+
+        function runAll(id) {
+          var times = [];
+          var all = ['aui', 'yui', 'react'];
+          for (var i = 0; i < all.length; i++) {
+            times.push(run(all[i]));
+          }
+          console.log('times', times);
+          draw(times);
         }
       });
     </script>

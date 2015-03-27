@@ -12,9 +12,35 @@
 
     <script src="../../react/react.js"></script>
     <script src="../../react/deeplyNestedList.js"></script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["bar"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = [
+          ['Iteration', 'Alloy4', 'YUI', 'React']
+        ];
+        var options = {
+          chart: {
+            title: 'Performance'
+          },
+          bars: 'horizontal'
+        };
+        var chart = new google.charts.Bar(document.getElementById('results'));
+        window.draw = function(result) {
+          result.unshift(String(data.length - 1));
+          data.push(result);
+          chart.draw(google.visualization.arrayToDataTable(data), options);
+        };
+      }
+    </script>
 </head>
 <body>
     <h1>Perf - Deeply Nested - First Render</h1>
+    <button id="all" class="btn btn-primary">Run: All</button>
+    <br><br>
+    <div id="results" style="width: 900px; height: 500px;"></div>
 
     <div class="testCase col-xs-4">
       <button id="aui" class="btn btn-primary">Run: AUI</button>
@@ -52,14 +78,33 @@
 
       function attachClickListener(button) {
         button.addEventListener('click', function() {
-          document.getElementById(button.id + '-list').innerHTML = '';
-
-          var time = Date.now();
-          handlers[button.id]();
-
-          var timeSpan = document.getElementById(button.id + '-time');
-          timeSpan.innerHTML = (Date.now() - time) + 'ms';
+          if (button.id === 'all') {
+            runAll();
+          } else {
+            run(button.id);
+          }
         });
+      }
+
+      function run(id) {
+        document.getElementById(id + '-list').innerHTML = '';
+
+        var time = Date.now();
+        handlers[id]();
+
+        var timeSpan = document.getElementById(id + '-time');
+        timeSpan.innerHTML = (Date.now() - time) + 'ms';
+        return Date.now() - time;
+      }
+
+      function runAll(id) {
+        var times = [];
+        var all = ['aui', 'react'];
+        for (var i = 0; i < all.length; i++) {
+          times.push(run(all[i]));
+        }
+        times.push(0);
+        draw(times);
       }
     </script>
 </body>
