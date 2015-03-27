@@ -7,11 +7,14 @@
 
     <link rel="stylesheet" href="bootstrap.min.css">
 
+    <script src="yui-min.js"></script>
     <script src="../node_modules/closure-templates/soyutils.js"></script>
     <script src="../aui/build/list.js"></script>
 
     <script src="../react/react.js"></script>
     <script src="../react/list.js"></script>
+
+    <script src="../yui/list.js"></script>
 </head>
 <body>
     <h1>Perf - First Render</h1>
@@ -22,9 +25,9 @@
       <div id="aui-list"></div>
     </div>
     <div class="testCase col-sm-4">
-      <button id="soy" class="btn btn-primary">Run: Soy</button>
-      <span id="soy-time"></span>
-      <div id="soy-list"></div>
+      <button id="yui" class="btn btn-primary">Run: YUI</button>
+      <span id="yui-time"></span>
+      <div id="yui-list"></div>
     </div>
     <div class="testCase col-sm-4">
       <button id="react" class="btn btn-primary">Run: React</button>
@@ -32,44 +35,45 @@
       <div id="react-list"></div>
     </div>
     <script>
-      var i;
-      var items = [];
-      for (i = 0; i < 1000; i++) {
-        items.push('Item ' + (i + 1));
-      }
-
-      var handlers = {
-        aui: function() {
-          new aui.List({items: items}).render('#aui-list');
-        },
-        soy: function() {
-          var data = {id: 'soy-list', items: items};
-          document.getElementById('soy-list').innerHTML = soy.$$getDelegateFn('List')(data, null, {renderChildComponents: true}).content
-        },
-        react: function() {
-          React.render(
-            React.createElement(react.List, {items: items}),
-            document.getElementById('react-list')
-          );
+      YUI().use(['TestList'], function (Y) {
+        var i;
+        var items = [];
+        for (i = 0; i < 1000; i++) {
+          items.push('Item ' + (i + 1));
         }
-      };
 
-      var buttons = document.querySelectorAll('button');
-      for (i = 0; i < buttons.length; i++) {
-        attachClickListener(buttons[i]);
-      }
+        var handlers = {
+          aui: function() {
+            new aui.List({items: items}).render('#aui-list');
+          },
+          yui: function() {
+            new Y.TestList({items: items}).render('#yui-list');
+          },
+          react: function() {
+            React.render(
+              React.createElement(react.List, {items: items}),
+              document.getElementById('react-list')
+            );
+          }
+        };
 
-      function attachClickListener(button) {
-        button.addEventListener('click', function() {
-          document.getElementById(button.id + '-list').innerHTML = '';
+        var buttons = document.querySelectorAll('button');
+        for (i = 0; i < buttons.length; i++) {
+          attachClickListener(buttons[i]);
+        }
 
-          var time = Date.now();
-          handlers[button.id]();
+        function attachClickListener(button) {
+          button.addEventListener('click', function() {
+            document.getElementById(button.id + '-list').innerHTML = '';
 
-          var timeSpan = document.getElementById(button.id + '-time');
-          timeSpan.innerHTML = (Date.now() - time) + 'ms';
-        });
-      }
+            var time = Date.now();
+            handlers[button.id]();
+
+            var timeSpan = document.getElementById(button.id + '-time');
+            timeSpan.innerHTML = (Date.now() - time) + 'ms';
+          });
+        }
+      });
     </script>
 </body>
 </html>

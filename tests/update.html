@@ -7,11 +7,14 @@
 
     <link rel="stylesheet" href="bootstrap.min.css">
 
+    <script src="yui-min.js"></script>
     <script src="../node_modules/closure-templates/soyutils.js"></script>
     <script src="../aui/build/list.js"></script>
 
     <script src="../react/react.js"></script>
     <script src="../react/list.js"></script>
+
+    <script src="../yui/list.js"></script>
 </head>
 <body>
     <h1>Perf - First Render</h1>
@@ -22,9 +25,9 @@
       <div id="aui-list"></div>
     </div>
     <div class="testCase col-sm-4">
-      <div id="soy" class="btn btn-primary">Update: Soy</div>
-      <span id="soy-time"></span>
-      <div id="soy-list"></div>
+      <div id="yui" class="btn btn-primary">Update: YUI</div>
+      <span id="yui-time"></span>
+      <div id="yui-list"></div>
     </div>
     <div class="testCase col-sm-4">
       <div id="react" class="btn btn-primary">Update: React</div>
@@ -32,58 +35,58 @@
       <div id="react-list"></div>
     </div>
     <script>
-      var i;
-      var items = [];
-      for (i = 0; i < 1000; i++) {
-        items.push('Item ' + (i + 1));
-      }
-
-      aui.myList = new aui.List({items: items.concat()}).render('#aui-list');
-
-      var data = {id: 'soy-list', items: items.concat()};
-      var soyList = document.getElementById('soy-list');
-      soyList.innerHTML = soy.$$getDelegateFn('List')(data, null, {renderChildComponents: true}).content;
-
-      react.myList = React.render(
-        React.createElement(react.List, {items: items.concat()}),
-        document.getElementById('react-list')
-      );
-
-      var handlers = {
-        aui: function(newItems, done) {
-          aui.myList.items = newItems;
-          aui.myList.on('attrsChanged', function() {
-            done();
-          });
-        },
-        soy: function(newItems, done) {
-          data = {id: 'soy-list', items: newItems.concat()};
-          soyList.innerHTML = soy.$$getDelegateFn('List')(data, null, {renderChildComponents: true}).content;
-          done();
-        },
-        react: function(newItems, done) {
-          react.myList.setState({items: newItems});
-          done();
+      YUI().use(['TestList'], function (Y) {
+        var i;
+        var items = [];
+        for (i = 0; i < 1000; i++) {
+          items.push('Item ' + (i + 1));
         }
-      };
 
-      var buttons = document.querySelectorAll('.btn-primary');
-      for (i = 0; i < buttons.length; i++) {
-        attachClickListener(buttons[i]);
-      }
+        aui.myList = new aui.List({items: items.concat()}).render('#aui-list');
 
-      function attachClickListener(button) {
-        button.addEventListener('click', function() {
-          var newItems = items.concat();
-          newItems[0] = 'My First Item';
+        window.myYUI = {};
+        myYUI.myList = new Y.TestList({items: items}).render('#yui-list');
 
-          var time = Date.now();
-          handlers[button.id](newItems, function() {
-            var timeSpan = document.getElementById(button.id + '-time');
-            timeSpan.innerHTML = (Date.now() - time) + 'ms';
+        react.myList = React.render(
+          React.createElement(react.List, {items: items.concat()}),
+          document.getElementById('react-list')
+        );
+
+        var handlers = {
+          aui: function(newItems, done) {
+            aui.myList.items = newItems;
+            aui.myList.on('attrsChanged', function() {
+              done();
+            });
+          },
+          yui: function(newItems, done) {
+            myYUI.myList.set('items', newItems);
+            done();
+          },
+          react: function(newItems, done) {
+            react.myList.setState({items: newItems});
+            done();
+          }
+        };
+
+        var buttons = document.querySelectorAll('.btn-primary');
+        for (i = 0; i < buttons.length; i++) {
+          attachClickListener(buttons[i]);
+        }
+
+        function attachClickListener(button) {
+          button.addEventListener('click', function() {
+            var newItems = items.concat();
+            newItems[0] = 'My First Item';
+
+            var time = Date.now();
+            handlers[button.id](newItems, function() {
+              var timeSpan = document.getElementById(button.id + '-time');
+              timeSpan.innerHTML = (Date.now() - time) + 'ms';
+            });
           });
-        });
-      }
+        }
+      });
     </script>
 </body>
 </html>
