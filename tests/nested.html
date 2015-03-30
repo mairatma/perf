@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="bootstrap.min.css">
 
     <script src="../node_modules/closure-templates/soyutils.js"></script>
-    <script src="../aui/build/list.js"></script>
+    <script src="../metaljs/build/list.js"></script>
 
     <script src="../react/react.js"></script>
     <script src="../react/nestedList.js"></script>
@@ -19,7 +19,7 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = [
-          ['Iteration', 'Alloy4', 'YUI', 'React']
+          ['Iteration', 'Metal.js', 'YUI', 'React']
         ];
         var options = {
           chart: {
@@ -43,9 +43,9 @@
     <div id="results" style="width: 900px; height: 500px;"></div>
 
     <div class="testCase col-xs-4">
-      <button id="aui" class="btn btn-primary">Run: AUI</button>
-      <span id="aui-time"></span>
-      <div id="aui-list"></div>
+      <button id="metal" class="btn btn-primary">Run: Metal.js</button>
+      <span id="metal-time"></span>
+      <div id="metal-list"></div>
     </div>
     <div class="testCase col-xs-4">
       <button id="react" class="btn btn-primary">Run: React</button>
@@ -60,8 +60,8 @@
       }
 
       var handlers = {
-        aui: function() {
-          aui.myList = new aui.NestedList({items: items}).render('#aui-list');
+        metal: function() {
+          metal.myList = new metal.NestedList({items: items}).render('#metal-list');
         },
         react: function() {
           React.render(
@@ -99,7 +99,7 @@
 
       function runAll(id) {
         var times = [];
-        var all = ['aui', 'react'];
+        var all = ['metal', 'react'];
         for (var i = 0; i < all.length; i++) {
           times.push(run(all[i]));
         }

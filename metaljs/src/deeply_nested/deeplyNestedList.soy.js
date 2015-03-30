@@ -1,5 +1,5 @@
 /* jshint ignore:start */
-import ComponentRegistry from 'aui/component/ComponentRegistry';
+import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
 var Templates = ComponentRegistry.Templates;
 // This file was automatically generated from deeplyNestedList.soy.
 // Please don't edit this file by hand.
@@ -97,13 +97,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentTemplate'), 'DeeplyNes
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.DeeplyNestedList.__deltemplate_s64_18eefb75 = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="deeplynestedlist component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
+Templates.DeeplyNestedList.__deltemplate_s64_733f642d = function(opt_data, opt_ignored, opt_ijData) {
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList'), 'element', true)(opt_data, null, opt_ijData));
 };
 if (goog.DEBUG) {
-  Templates.DeeplyNestedList.__deltemplate_s64_18eefb75.soyTemplateName = 'Templates.DeeplyNestedList.__deltemplate_s64_18eefb75';
+  Templates.DeeplyNestedList.__deltemplate_s64_733f642d.soyTemplateName = 'Templates.DeeplyNestedList.__deltemplate_s64_733f642d';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList'), 'element', 0, Templates.DeeplyNestedList.__deltemplate_s64_18eefb75);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentElement'), 'DeeplyNestedList', 0, Templates.DeeplyNestedList.__deltemplate_s64_733f642d);
 
 
 /**
@@ -113,13 +113,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList'), 'element', 
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.DeeplyNestedList.__deltemplate_s72_733f642d = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList'), 'element', true)(opt_data, null, opt_ijData));
+Templates.DeeplyNestedList.__deltemplate_s66_18eefb75 = function(opt_data, opt_ignored, opt_ijData) {
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="deeplynestedlist component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
-  Templates.DeeplyNestedList.__deltemplate_s72_733f642d.soyTemplateName = 'Templates.DeeplyNestedList.__deltemplate_s72_733f642d';
+  Templates.DeeplyNestedList.__deltemplate_s66_18eefb75.soyTemplateName = 'Templates.DeeplyNestedList.__deltemplate_s66_18eefb75';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentElement'), 'DeeplyNestedList', 0, Templates.DeeplyNestedList.__deltemplate_s72_733f642d);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList'), 'element', 0, Templates.DeeplyNestedList.__deltemplate_s66_18eefb75);
 
 
 /**
@@ -146,7 +146,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList.rows'), 'eleme
  * @suppress {checkTypes}
  */
 Templates.DeeplyNestedList.__deltemplate_s80_a7a9269d = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$escapeHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('Surface'), '', true)({content: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + soy.$$getDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList.rows'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? Templates.DeeplyNestedList.rows(opt_data, null, opt_ijData) : ''))}), null, opt_ijData)), id: opt_data.id + '-rows'}, null, opt_ijData)));
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList.rows'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? soy.$$escapeHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('Surface'), '', true)({content: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + Templates.DeeplyNestedList.rows(opt_data, null, opt_ijData)), id: opt_data.id + '-rows'}, null, opt_ijData)) : ''))}), null, opt_ijData));
 };
 if (goog.DEBUG) {
   Templates.DeeplyNestedList.__deltemplate_s80_a7a9269d.soyTemplateName = 'Templates.DeeplyNestedList.__deltemplate_s80_a7a9269d';

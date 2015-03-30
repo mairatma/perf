@@ -3,10 +3,10 @@
 var del = require('del');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
-var registerTasks = require('alloyui-tasks');
+var metaljs = require('metaljs');
 var runSequence = require('run-sequence');
 
-registerTasks({
+metaljs({
   buildDest: 'aui/build',
   buildSrc: 'aui/src/**/*.js',
   bundleFileName: 'list.js',

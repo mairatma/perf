@@ -1,7 +1,7 @@
 'use strict'
 
-import ComponentRegistry from 'aui/component/ComponentRegistry';
-import SoyComponent from 'aui/soy/SoyComponent';
+import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
+import SoyComponent from 'metaljs/src/soy/SoyComponent';
 
 import './nestedList.soy';
 

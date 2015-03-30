@@ -9,7 +9,7 @@
 
     <script src="yui-min.js"></script>
     <script src="../node_modules/closure-templates/soyutils.js"></script>
-    <script src="../aui/build/list.js"></script>
+    <script src="../metaljs/build/list.js"></script>
 
     <script src="../react/react.js"></script>
     <script src="../react/list.js"></script>
@@ -22,7 +22,7 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = [
-          ['Iteration', 'Alloy4', 'YUI', 'React']
+          ['Iteration', 'Metal.js', 'YUI', 'React']
         ];
         var options = {
           chart: {
@@ -47,9 +47,9 @@
 
     <div class="col-sm-12">
       <div class="testCase col-sm-4">
-        <div id="aui" class="btn btn-primary">Run: AUI</div>
-        <span id="aui-time"></span>
-        <div id="aui-list"></div>
+        <div id="metal" class="btn btn-primary">Run: Metal.js</div>
+        <span id="metal-time"></span>
+        <div id="metal-list"></div>
       </div>
       <div class="testCase col-sm-4">
         <div id="yui" class="btn btn-primary">Update: YUI</div>
@@ -70,7 +70,7 @@
           items.push('Item ' + (i + 1));
         }
 
-        new aui.List({id: 'aui-list-element', items: items}).render('#aui-list');
+        new metal.List({id: 'metal-list-element', items: items}).render('#metal-list');
         window.myYUI = {};
         myYUI.myList = new Y.TestList({items: items}).render('#yui-list');
         React.render(
@@ -79,8 +79,8 @@
         );
 
         var handlers = {
-          aui: function() {
-            new aui.List({element: '#aui-list-element', items: items}).decorate();
+          metal: function() {
+            new metal.List({element: '#metal-list-element', items: items}).decorate();
           },
           yui: function() {
             new Y.TestList({
@@ -122,7 +122,7 @@
 
         function runAll(id) {
           var times = [];
-          var all = ['aui', 'yui', 'react'];
+          var all = ['metal', 'yui', 'react'];
           for (var i = 0; i < all.length; i++) {
             times.push(run(all[i]));
           }

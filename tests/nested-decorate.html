@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./bootstrap.min.css">
 
     <script src="../node_modules/closure-templates/soyutils.js"></script>
-    <script src="../aui/build/list.js"></script>
+    <script src="../metaljs/build/list.js"></script>
 
     <script src="../react/react.js"></script>
     <script src="../react/nestedList.js"></script>
@@ -19,7 +19,7 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = [
-          ['Iteration', 'Alloy4', 'YUI', 'React']
+          ['Iteration', 'Metal.js', 'YUI', 'React']
         ];
         var options = {
           chart: {
@@ -43,9 +43,9 @@
     <div id="results" style="width: 900px; height: 500px;"></div>
 
     <div class="testCase col-xs-4">
-      <div id="aui" class="btn btn-primary">Run: AUI</div>
-      <span id="aui-time"></span>
-      <div id="aui-list"></div>
+      <div id="metal" class="btn btn-primary">Run: Metal.js</div>
+      <span id="metal-time"></span>
+      <div id="metal-list"></div>
     </div>
     <div class="testCase col-xs-4">
       <div id="react" class="btn btn-primary">Run: React</div>
@@ -59,15 +59,15 @@
         items.push({label: 'Item ' + (i + 1)});
       }
 
-      new aui.NestedList({id: 'aui-list-element', items: items}).render('#aui-list');
+      new metal.NestedList({id: 'metal-list-element', items: items}).render('#metal-list');
       React.render(
         React.createElement(react.NestedList, {items: items}),
         document.getElementById('react-list')
       );
 
       var handlers = {
-        aui: function() {
-          new aui.NestedList({element: '#aui-list-element', items: items}).decorate();
+        metal: function() {
+          new metal.NestedList({element: '#metal-list-element', items: items}).decorate();
         },
         react: function() {
           React.render(
@@ -103,7 +103,7 @@
 
       function runAll(id) {
         var times = [];
-        var all = ['aui', 'react'];
+        var all = ['metal', 'react'];
         for (var i = 0; i < all.length; i++) {
           times.push(run(all[i]));
         }

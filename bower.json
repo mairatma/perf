@@ -1,0 +1,18 @@
+{
+  "name": "metal-perf",
+  "version": "0.0.0",
+  "description": "Metal.js performance tests.",
+  "keywords": [
+    "metal",
+    "metaljs",
+    "perf"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "metaljs": "liferay/metal.js"
+  }
+}

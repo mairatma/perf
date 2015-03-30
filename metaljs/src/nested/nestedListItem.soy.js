@@ -1,5 +1,5 @@
 /* jshint ignore:start */
-import ComponentRegistry from 'aui/component/ComponentRegistry';
+import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
 var Templates = ComponentRegistry.Templates;
 // This file was automatically generated from nestedListItem.soy.
 // Please don't edit this file by hand.
@@ -89,13 +89,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentTemplate'), 'NestedLis
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedListItem.__deltemplate_s202_01d1e9dd = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="nestedlistitem component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
+Templates.NestedListItem.__deltemplate_s202_dc06d806 = function(opt_data, opt_ignored, opt_ijData) {
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedListItem'), 'element', true)(opt_data, null, opt_ijData));
 };
 if (goog.DEBUG) {
-  Templates.NestedListItem.__deltemplate_s202_01d1e9dd.soyTemplateName = 'Templates.NestedListItem.__deltemplate_s202_01d1e9dd';
+  Templates.NestedListItem.__deltemplate_s202_dc06d806.soyTemplateName = 'Templates.NestedListItem.__deltemplate_s202_dc06d806';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedListItem'), 'element', 0, Templates.NestedListItem.__deltemplate_s202_01d1e9dd);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentElement'), 'NestedListItem', 0, Templates.NestedListItem.__deltemplate_s202_dc06d806);
 
 
 /**
@@ -105,13 +105,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedListItem'), 'element', 0,
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedListItem.__deltemplate_s210_dc06d806 = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedListItem'), 'element', true)(opt_data, null, opt_ijData));
+Templates.NestedListItem.__deltemplate_s204_01d1e9dd = function(opt_data, opt_ignored, opt_ijData) {
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="nestedlistitem component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
-  Templates.NestedListItem.__deltemplate_s210_dc06d806.soyTemplateName = 'Templates.NestedListItem.__deltemplate_s210_dc06d806';
+  Templates.NestedListItem.__deltemplate_s204_01d1e9dd.soyTemplateName = 'Templates.NestedListItem.__deltemplate_s204_01d1e9dd';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('ComponentElement'), 'NestedListItem', 0, Templates.NestedListItem.__deltemplate_s210_dc06d806);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedListItem'), 'element', 0, Templates.NestedListItem.__deltemplate_s204_01d1e9dd);
 
 
 /**
@@ -138,7 +138,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedListItem.label'), 'elemen
  * @suppress {checkTypes}
  */
 Templates.NestedListItem.__deltemplate_s218_ac2cc419 = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$escapeHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('Surface'), '', true)({content: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedListItem.label'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? Templates.NestedListItem.label(opt_data, null, opt_ijData) : ''))}), null, opt_ijData)), id: opt_data.id + '-label'}, null, opt_ijData)));
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedListItem.label'), 'element', true)(soy.$$augmentMap(opt_data, {elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? soy.$$escapeHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('Surface'), '', true)({content: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + Templates.NestedListItem.label(opt_data, null, opt_ijData)), id: opt_data.id + '-label'}, null, opt_ijData)) : ''))}), null, opt_ijData));
 };
 if (goog.DEBUG) {
   Templates.NestedListItem.__deltemplate_s218_ac2cc419.soyTemplateName = 'Templates.NestedListItem.__deltemplate_s218_ac2cc419';

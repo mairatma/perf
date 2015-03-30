@@ -1,6 +1,6 @@
 'use strict'
 
-import ComponentRegistry from 'aui/component/ComponentRegistry';
+import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
 import NestedList from '../nested/nestedList';
 
 import './deeplyNestedList.soy';

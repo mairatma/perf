@@ -9,7 +9,7 @@
 
     <script src="yui-min.js"></script>
     <script src="../node_modules/closure-templates/soyutils.js"></script>
-    <script src="../aui/build/list.js"></script>
+    <script src="../metaljs/build/list.js"></script>
 
     <script src="../react/react.js"></script>
     <script src="../react/list.js"></script>
@@ -22,7 +22,7 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = [
-          ['Iteration', 'Alloy4', 'YUI', 'React']
+          ['Iteration', 'Metal.js', 'YUI', 'React']
         ];
         var options = {
           chart: {
@@ -46,9 +46,9 @@
     <div id="results" style="width: 900px; height: 500px;"></div>
 
     <div class="testCase col-sm-4">
-      <div id="aui" class="btn btn-primary">Update: AUI</div>
-      <span id="aui-time"></span>
-      <div id="aui-list"></div>
+      <div id="metal" class="btn btn-primary">Update: Metal.js</div>
+      <span id="metal-time"></span>
+      <div id="metal-list"></div>
     </div>
     <div class="testCase col-sm-4">
       <div id="yui" class="btn btn-primary">Update: YUI</div>
@@ -68,7 +68,7 @@
           items.push('Item ' + (i + 1));
         }
 
-        aui.myList = new aui.List({items: items.concat()}).render('#aui-list');
+        metal.myList = new metal.List({items: items.concat()}).render('#metal-list');
 
         window.myYUI = {};
         myYUI.myList = new Y.TestList({items: items}).render('#yui-list');
@@ -79,9 +79,9 @@
         );
 
         var handlers = {
-          aui: function(newItems, done) {
-            aui.myList.items = newItems;
-            aui.myList.once('attrsChanged', function() {
+          metal: function(newItems, done) {
+            metal.myList.items = newItems;
+            metal.myList.once('attrsChanged', function() {
               done();
             });
           },
@@ -124,7 +124,7 @@
 
         function runAll(id) {
           var times = [];
-          run('aui', function(time) {
+          run('metal', function(time) {
             times.push(time);
             run('yui', function(time) {
               times.push(time);
