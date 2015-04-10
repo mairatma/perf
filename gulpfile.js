@@ -7,11 +7,11 @@ var metaljs = require('metaljs');
 var runSequence = require('run-sequence');
 
 metaljs({
-  buildDest: 'aui/build',
-  buildSrc: 'aui/src/**/*.js',
+  buildDest: 'metaljs/build',
+  buildSrc: 'metaljs/src/**/*.js',
   bundleFileName: 'list.js',
-  soyDest: 'aui/src',
-  soySrc: 'aui/src/**/*.soy'
+  soyDest: 'metaljs/src',
+  soySrc: 'metaljs/src/**/*.soy'
 });
 
 gulp.task('build', function(done) {
