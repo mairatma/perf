@@ -13,6 +13,6 @@
     "bower_components"
   ],
   "dependencies": {
-    "metaljs": "liferay/metal.js"
+    "metaljs": "liferay/metal.js#master"
   }
 }

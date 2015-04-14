@@ -21,7 +21,7 @@
     "gulp-jshint": "^1.9.4",
     "gulp-load-plugins": "^0.8.1",
     "jshint-stylish": "^1.0.1",
-    "metaljs": "liferay/metal.js",
+    "metaljs": "liferay/metal.js#master",
     "run-sequence": "^1.0.2"
   }
 }
