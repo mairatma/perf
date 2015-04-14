@@ -14,8 +14,9 @@
 {template .rows}
 	{for $index in range(length($items))}
 		{let $itemIndex: $inverted ? length($items) - $index - 1 : $index /}
-		{delcall NestedListItem data="$items[$itemIndex]"}
+		{delcall NestedListItem}
 			{param id: $id + '-item' + $itemIndex /}
+			{param label: $items[$itemIndex].label /}
 		{/delcall}
 	{/for}
 {/template}
