@@ -40,10 +40,10 @@ if (goog.DEBUG) {
  */
 Templates.NestedList.rows = function(opt_data, opt_ignored, opt_ijData) {
   var output = '';
-  var indexLimit148 = opt_data.items.length;
-  for (var index148 = 0; index148 < indexLimit148; index148++) {
-    var itemIndex__soy149 = opt_data.inverted ? opt_data.items.length - index148 - 1 : index148;
-    output += soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedListItem'), '', true)({id: opt_data.id + '-item' + itemIndex__soy149, label: opt_data.items[itemIndex__soy149].label}, null, opt_ijData);
+  var indexLimit165 = opt_data.items.length;
+  for (var index165 = 0; index165 < indexLimit165; index165++) {
+    var itemIndex__soy166 = opt_data.inverted ? opt_data.items.length - index165 - 1 : index165;
+    output += soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedListItem'), '', true)({id: opt_data.id + '-item' + itemIndex__soy166, label: opt_data.items[itemIndex__soy166].label}, null, opt_ijData);
   }
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
 };
@@ -59,13 +59,13 @@ if (goog.DEBUG) {
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedList.__deltemplate_s153_53d5ac21 = function(opt_data, opt_ignored, opt_ijData) {
+Templates.NestedList.__deltemplate_s170_53d5ac21 = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedList'), 'element', true)({elementClasses: opt_data.elementClasses, elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedList'), 'content', true)(opt_data, null, opt_ijData)), id: opt_data.id}, null, opt_ijData));
 };
 if (goog.DEBUG) {
-  Templates.NestedList.__deltemplate_s153_53d5ac21.soyTemplateName = 'Templates.NestedList.__deltemplate_s153_53d5ac21';
+  Templates.NestedList.__deltemplate_s170_53d5ac21.soyTemplateName = 'Templates.NestedList.__deltemplate_s170_53d5ac21';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), '', 0, Templates.NestedList.__deltemplate_s153_53d5ac21);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), '', 0, Templates.NestedList.__deltemplate_s170_53d5ac21);
 
 
 /**
@@ -75,13 +75,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), '', 0, Templates.
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedList.__deltemplate_s159_66e1cf61 = function(opt_data, opt_ignored, opt_ijData) {
+Templates.NestedList.__deltemplate_s176_66e1cf61 = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(Templates.NestedList.content(opt_data, null, opt_ijData));
 };
 if (goog.DEBUG) {
-  Templates.NestedList.__deltemplate_s159_66e1cf61.soyTemplateName = 'Templates.NestedList.__deltemplate_s159_66e1cf61';
+  Templates.NestedList.__deltemplate_s176_66e1cf61.soyTemplateName = 'Templates.NestedList.__deltemplate_s176_66e1cf61';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), 'content', 0, Templates.NestedList.__deltemplate_s159_66e1cf61);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), 'content', 0, Templates.NestedList.__deltemplate_s176_66e1cf61);
 
 
 /**
@@ -91,13 +91,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), 'content', 0, Tem
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedList.__deltemplate_s161_473fc56f = function(opt_data, opt_ignored, opt_ijData) {
+Templates.NestedList.__deltemplate_s178_473fc56f = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="nestedlist component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
-  Templates.NestedList.__deltemplate_s161_473fc56f.soyTemplateName = 'Templates.NestedList.__deltemplate_s161_473fc56f';
+  Templates.NestedList.__deltemplate_s178_473fc56f.soyTemplateName = 'Templates.NestedList.__deltemplate_s178_473fc56f';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), 'element', 0, Templates.NestedList.__deltemplate_s161_473fc56f);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), 'element', 0, Templates.NestedList.__deltemplate_s178_473fc56f);
 
 
 /**
@@ -107,13 +107,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), 'element', 0, Tem
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedList.__deltemplate_s169_71fca2ab = function(opt_data, opt_ignored, opt_ijData) {
+Templates.NestedList.__deltemplate_s186_71fca2ab = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-rows">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
-  Templates.NestedList.__deltemplate_s169_71fca2ab.soyTemplateName = 'Templates.NestedList.__deltemplate_s169_71fca2ab';
+  Templates.NestedList.__deltemplate_s186_71fca2ab.soyTemplateName = 'Templates.NestedList.__deltemplate_s186_71fca2ab';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), 'element', 0, Templates.NestedList.__deltemplate_s169_71fca2ab);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), 'element', 0, Templates.NestedList.__deltemplate_s186_71fca2ab);
 
 
 /**
@@ -123,13 +123,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), 'element', 0
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedList.__deltemplate_s175_f2f6b9c5 = function(opt_data, opt_ignored, opt_ijData) {
+Templates.NestedList.__deltemplate_s192_f2f6b9c5 = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), 'element', true)({elementContent: soydata.VERY_UNSAFE.$$ordainSanitizedHtmlForInternalBlocks('' + ((! opt_ijData.skipSurfaceContents) ? soy.$$getDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), 'content', true)(opt_data, null, opt_ijData) : '')), id: opt_data.id}, null, opt_ijData));
 };
 if (goog.DEBUG) {
-  Templates.NestedList.__deltemplate_s175_f2f6b9c5.soyTemplateName = 'Templates.NestedList.__deltemplate_s175_f2f6b9c5';
+  Templates.NestedList.__deltemplate_s192_f2f6b9c5.soyTemplateName = 'Templates.NestedList.__deltemplate_s192_f2f6b9c5';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), '', 0, Templates.NestedList.__deltemplate_s175_f2f6b9c5);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), '', 0, Templates.NestedList.__deltemplate_s192_f2f6b9c5);
 
 
 /**
@@ -139,13 +139,13 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), '', 0, Templ
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedList.__deltemplate_s182_7e61721e = function(opt_data, opt_ignored, opt_ijData) {
+Templates.NestedList.__deltemplate_s199_7e61721e = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(Templates.NestedList.rows(opt_data, null, opt_ijData));
 };
 if (goog.DEBUG) {
-  Templates.NestedList.__deltemplate_s182_7e61721e.soyTemplateName = 'Templates.NestedList.__deltemplate_s182_7e61721e';
+  Templates.NestedList.__deltemplate_s199_7e61721e.soyTemplateName = 'Templates.NestedList.__deltemplate_s199_7e61721e';
 }
-soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), 'content', 0, Templates.NestedList.__deltemplate_s182_7e61721e);
+soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList.rows'), 'content', 0, Templates.NestedList.__deltemplate_s199_7e61721e);
 
 Templates.NestedList.rows.params = ["id","items","inverted"];
 /* jshint ignore:end */

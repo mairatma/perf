@@ -11,6 +11,10 @@ class DeeplyNestedListItem extends SoyComponent {
 	}
 }
 
+DeeplyNestedListItem.ATTRS = {
+	children: {}
+};
+
 ComponentRegistry.register('DeeplyNestedListItem', DeeplyNestedListItem);
 
 export default DeeplyNestedListItem;
