@@ -61,6 +61,7 @@
 
       var handlers = {
         metal: function() {
+          metal.ComponentCollector.components = {};
           metal.myList = new metal.NestedList({items: items}).render('#metal-list');
         },
         react: function() {

@@ -67,6 +67,7 @@
 
       var handlers = {
         metal: function() {
+          metal.ComponentCollector.components = {};
           new metal.NestedList({element: '#metal-list-element', items: items}).decorate();
         },
         react: function() {
