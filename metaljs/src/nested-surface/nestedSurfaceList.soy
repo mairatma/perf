@@ -1,0 +1,33 @@
+{namespace Templates.NestedSurfaceList}
+
+/**
+ */
+{template .content}
+	{delcall NestedSurfaceList.rows data="all" /}
+{/template}
+
+/**
+ * @param id
+ * @param items
+ */
+{template .rows}
+	{foreach $item in $items}
+		<div class="row">
+			<div class="col-md-12">
+				<span>
+					{delcall NestedSurfaceList.item}
+						{param id: $id /}
+						{param text: $item /}
+					{/delcall}
+				</span>
+			</div>
+		</div>
+	{/foreach}
+{/template}
+
+/**
+ * @param text
+ */
+{template .item}
+	{$text}
+{/template}

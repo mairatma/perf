@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perf - Decorate</title>
+
+    <link rel="stylesheet" href="../bootstrap.min.css">
+
+    <script src="../yui-min.js"></script>
+    <script src="../../node_modules/closure-templates/soyutils.js"></script>
+    <script src="../../metaljs/build/list.js"></script>
+
+    <script src="../../react/react.min.js"></script>
+    <script src="../../react/list.js"></script>
+
+    <script src="../../yui/list.js"></script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["bar"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = [
+          ['Iteration', 'Metal.js', 'YUI', 'React']
+        ];
+        var options = {
+          chart: {
+            title: 'Performance'
+          },
+          bars: 'horizontal'
+        };
+        var chart = new google.charts.Bar(document.getElementById('results'));
+        window.draw = function(result) {
+          result.unshift(String(data.length - 1));
+          data.push(result);
+          chart.draw(google.visualization.arrayToDataTable(data), options);
+        };
+      }
+    </script>
+</head>
+<body>
+    <h1>Perf - Decorate</h1>
+    <div id="all" class="btn btn-primary">Run: All</div>
+    <br><br>
+    <div id="results" style="width: 900px; height: 500px;"></div>
+
+    <div class="col-sm-12">
+      <div class="testCase col-sm-4">
+        <div id="metal" class="btn btn-primary">Run: Metal.js</div>
+        <span id="metal-time"></span>
+        <div id="metal-list"></div>
+      </div>
+      <div class="testCase col-sm-4">
+        <div id="yui" class="btn btn-primary">Update: YUI</div>
+        <span id="yui-time"></span>
+        <div id="yui-list"></div>
+      </div>
+      <div class="testCase col-sm-4">
+        <div id="react" class="btn btn-primary">Run: React</div>
+        <span id="react-time"></span>
+        <div id="react-list"></div>
+      </div>
+    </div>
+    <script>
+      YUI().use(['TestList'], function (Y) {
+        var i;
+        var items = [];
+        for (i = 0; i < 1000; i++) {
+          items.push('Item ' + (i + 1));
+        }
+
+        new metal.NestedSurfaceList({id: 'metal-list-element', items: items}).render('#metal-list');
+        window.myYUI = {};
+        myYUI.myList = new Y.TestList({items: items}).render('#yui-list');
+        React.render(
+          React.createElement(react.List, {items: items}),
+          document.getElementById('react-list')
+        );
+
+        var handlers = {
+          metal: function() {
+            new metal.List({element: '#metal-list-element', items: items}).decorate();
+          },
+          yui: function() {
+            new Y.TestList({
+              items: items,
+              srcNode: Y.one('#yui-list')
+            }).render();
+          },
+          react: function() {
+            React.render(
+              React.createElement(react.List, {items: items}),
+              document.getElementById('react-list')
+            );
+          }
+        };
+
+        var buttons = document.querySelectorAll('.btn-primary');
+        for (i = 0; i < buttons.length; i++) {
+          attachClickListener(buttons[i]);
+        }
+
+        function attachClickListener(button) {
+          button.addEventListener('click', function() {
+            if (button.id === 'all') {
+              runAll();
+            } else {
+              run(button.id);
+            }
+          });
+        }
+
+        function run(id) {
+          var time = Date.now();
+          handlers[id]();
+
+          var timeSpan = document.getElementById(id + '-time');
+          timeSpan.innerHTML = (Date.now() - time) + 'ms';
+          return Date.now() - time;
+        }
+
+        function runAll(id) {
+          var times = [];
+          var all = ['metal', 'yui', 'react'];
+          for (var i = 0; i < all.length; i++) {
+            times.push(run(all[i]));
+          }
+          console.log('times', times);
+          draw(times);
+        }
+      });
+    </script>
+</body>
+</html>

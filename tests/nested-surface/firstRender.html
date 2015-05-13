@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perf - Update</title>
+    <title>Perf - First Render</title>
 
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap.min.css">
 
-    <script src="yui-min.js"></script>
-    <script src="../node_modules/closure-templates/soyutils.js"></script>
-    <script src="../metaljs/build/list.js"></script>
+    <script src="../yui-min.js"></script>
+    <script src="../../node_modules/closure-templates/soyutils.js"></script>
+    <script src="../../metaljs/build/list.js"></script>
 
-    <script src="../react/react.min.js"></script>
-    <script src="../react/list.js"></script>
+    <script src="../../react/react.min.js"></script>
+    <script src="../../react/list.js"></script>
 
-    <script src="../yui/list.js"></script>
+    <script src="../../yui/list.js"></script>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
@@ -46,17 +46,17 @@
     <div id="results" style="width: 900px; height: 500px;"></div>
 
     <div class="testCase col-sm-4">
-      <div id="metal" class="btn btn-primary">Update: Metal.js</div>
+      <button id="metal" class="btn btn-primary">Run: Metal.js</button>
       <span id="metal-time"></span>
       <div id="metal-list"></div>
     </div>
     <div class="testCase col-sm-4">
-      <div id="yui" class="btn btn-primary">Update: YUI</div>
+      <button id="yui" class="btn btn-primary">Run: YUI</button>
       <span id="yui-time"></span>
       <div id="yui-list"></div>
     </div>
     <div class="testCase col-sm-4">
-      <div id="react" class="btn btn-primary">Update: React</div>
+      <button id="react" class="btn btn-primary">Run: React</button>
       <span id="react-time"></span>
       <div id="react-list"></div>
     </div>
@@ -68,34 +68,22 @@
           items.push('Item ' + (i + 1));
         }
 
-        metal.myList = new metal.List({items: items.concat()}).render('#metal-list');
-
-        window.myYUI = {};
-        myYUI.myList = new Y.TestList({items: items}).render('#yui-list');
-
-        react.myList = React.render(
-          React.createElement(react.List, {items: items.concat()}),
-          document.getElementById('react-list')
-        );
-
         var handlers = {
-          metal: function(newItems, done) {
-            metal.myList.items = newItems;
-            metal.myList.once('attrsChanged', function() {
-              done();
-            });
+          metal: function() {
+            new metal.NestedSurfaceList({items: items}).render('#metal-list');
           },
-          yui: function(newItems, done) {
-            myYUI.myList.set('items', newItems);
-            done();
+          yui: function() {
+            new Y.TestList({items: items}).render('#yui-list');
           },
-          react: function(newItems, done) {
-            react.myList.setState({items: newItems});
-            done();
+          react: function() {
+            React.render(
+              React.createElement(react.List, {items: items}),
+              document.getElementById('react-list')
+            );
           }
         };
 
-        var buttons = document.querySelectorAll('.btn-primary');
+        var buttons = document.querySelectorAll('button');
         for (i = 0; i < buttons.length; i++) {
           attachClickListener(buttons[i]);
         }
@@ -110,30 +98,22 @@
           });
         }
 
-        function run(id, callback) {
-          var newItems = items.concat();
-          newItems[0] = 'My First Item';
-
+        function run(id) {
           var time = Date.now();
-          handlers[id](newItems, function() {
-            var timeSpan = document.getElementById(id + '-time');
-            timeSpan.innerHTML = (Date.now() - time) + 'ms';
-            callback && callback(Date.now() - time);
-          });
+          handlers[id]();
+
+          var timeSpan = document.getElementById(id + '-time');
+          timeSpan.innerHTML = (Date.now() - time) + 'ms';
+          return Date.now() - time;
         }
 
         function runAll(id) {
           var times = [];
-          run('metal', function(time) {
-            times.push(time);
-            run('yui', function(time) {
-              times.push(time);
-              run('react', function(time) {
-                times.push(time);
-                draw(times);
-              });
-            });
-          });
+          var all = ['metal', 'yui', 'react'];
+          for (var i = 0; i < all.length; i++) {
+            times.push(run(all[i]));
+          }
+          draw(times);
         }
       });
     </script>

@@ -79,7 +79,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('DeeplyNestedList'), '', 0, Temp
  */
 Templates.DeeplyNestedList.__deltemplate_s57_18eefb75 = function(opt_data, opt_ignored, opt_ijData) {
   opt_data = opt_data || {};
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="deeplynestedlist component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="deeplynestedlist component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
   Templates.DeeplyNestedList.__deltemplate_s57_18eefb75.soyTemplateName = 'Templates.DeeplyNestedList.__deltemplate_s57_18eefb75';

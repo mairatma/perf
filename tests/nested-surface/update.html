@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perf - Update</title>
 
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap.min.css">
 
-    <script src="yui-min.js"></script>
-    <script src="../node_modules/closure-templates/soyutils.js"></script>
-    <script src="../metaljs/build/list.js"></script>
+    <script src="../yui-min.js"></script>
+    <script src="../../node_modules/closure-templates/soyutils.js"></script>
+    <script src="../../metaljs/build/list.js"></script>
 
-    <script src="../react/react.min.js"></script>
-    <script src="../react/list.js"></script>
+    <script src="../../react/react.min.js"></script>
+    <script src="../../react/list.js"></script>
 
-    <script src="../yui/list.js"></script>
+    <script src="../../yui/list.js"></script>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
@@ -68,7 +68,7 @@
           items.push('Item ' + (i + 1));
         }
 
-        metal.myList = new metal.List({items: items.concat()}).render('#metal-list');
+        metal.myList = new metal.NestedSurfaceList({items: items.concat()}).render('#metal-list');
 
         window.myYUI = {};
         myYUI.myList = new Y.TestList({items: items}).render('#yui-list');

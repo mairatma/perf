@@ -78,7 +78,7 @@ soy.$$registerDelegateFn(soy.$$getDelTemplateId('NestedList'), '', 0, Templates.
  */
 Templates.NestedList.__deltemplate_s155_473fc56f = function(opt_data, opt_ignored, opt_ijData) {
   opt_data = opt_data || {};
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="nestedlist component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '" data-component="">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="nestedlist component' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? ' ' + opt_data.elementClasses : '') + '">' + soy.$$escapeHtml(opt_data.elementContent) + '</div>');
 };
 if (goog.DEBUG) {
   Templates.NestedList.__deltemplate_s155_473fc56f.soyTemplateName = 'Templates.NestedList.__deltemplate_s155_473fc56f';
