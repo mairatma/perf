@@ -28,15 +28,15 @@ YUI.add('TestList', function(Y) {
 			}
 		},
 
-        HTML_PARSER: {
-            items: function(srcNode) {
-            	var items = [];
-            	var itemNodes = srcNode.all('.row span');
-            	itemNodes.each(function(node) {
-            		items.push(node.get('text'));
-            	});
-            	return items;
-            }
-        }
+    HTML_PARSER: {
+      items: function(srcNode) {
+      	var items = [];
+      	var itemNodes = srcNode.all('.row span');
+      	itemNodes.each(function(node) {
+      		items.push(node.get('text'));
+      	});
+      	return items;
+      }
+    }
 	});
 }, '1.0', {"requires": ["base-build", "node", "widget"]});
