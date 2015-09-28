@@ -1,0 +1,24 @@
+{namespace Templates.NestedListItem}
+
+/**
+ * @param id
+ * @param text
+ */
+{template .content}
+	<div class="row">
+		<div class="col-md-12">
+			{call .text data="all"}
+				{param surfaceId: 'text' + index($item) /}
+			{/call}
+		</div>
+	</div>
+{/template}
+
+/**
+ * @param id
+ * @param surfaceId
+ * @param text
+ */
+{template .text}
+	<span id="{$id}-{$surfaceId}">{$text}</span>
+{/template}

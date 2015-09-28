@@ -1,0 +1,16 @@
+{namespace Templates.NestedList}
+
+/**
+ * @param id
+ * @param items
+ */
+{template .content}
+	<div id="{$id}">
+		{for $item in $items}
+			{call Templates.NestedListItem.content}
+				{param id: $id + '-item' + index($item) /}
+				{param label: $item /}
+			{/call}
+		{/for}
+	</div>
+{/template}

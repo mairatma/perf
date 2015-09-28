@@ -1,0 +1,32 @@
+{namespace Templates.List}
+
+/**
+ * @param id
+ * @param items
+ */
+{template .content}
+	<div id="{$id}">
+		{foreach $item in $items}
+			<div class="row">
+				<div class="col-md-12">
+					{call .item}
+						{param id: $id /}
+						{param surfaceId: 'item' + index($item) /}
+						{param text: $item /}
+					{/call}
+				</div>
+			</div>
+		{/foreach}
+	</div>
+{/template}
+
+/**
+ * @param id
+ * @param surfaceId
+ * @param text
+ */
+{template .item}
+	<span id="{$id}-{$surfaceId}">
+		{$text}
+	</span>
+{/template}
