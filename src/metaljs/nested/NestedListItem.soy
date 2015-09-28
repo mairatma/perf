@@ -7,18 +7,15 @@
 {template .content}
 	<div class="row">
 		<div class="col-md-12">
-			{call .text data="all"}
-				{param surfaceId: 'text' + index($item) /}
-			{/call}
+			{call .text data="all" /}
 		</div>
 	</div>
 {/template}
 
 /**
  * @param id
- * @param surfaceId
  * @param text
  */
 {template .text}
-	<span id="{$id}-{$surfaceId}">{$text}</span>
+	<span id="{$id}-text">{$text}</span>
 {/template}

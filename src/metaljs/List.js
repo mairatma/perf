@@ -1,7 +1,7 @@
 'use strict';
 
-import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
-import SoyComponent from 'metaljs/src/soy/SoyComponent';
+import ComponentRegistry from 'bower:metal/src/component/ComponentRegistry';
+import SoyComponent from 'bower:metal/src/soy/SoyComponent';
 import './List.soy';
 
 class List extends SoyComponent {}

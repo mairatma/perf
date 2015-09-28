@@ -1,6 +1,6 @@
 'use strict';
 
-import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
+import ComponentRegistry from 'bower:metal/src/component/ComponentRegistry';
 import List from '../List';
 import './NestedListItem';
 import './NestedList.soy';

@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.4",
-    "metaljs": "liferay/metal.js#master",
+    "metal": "liferay/metal.js#master",
     "react": "~0.13.3",
     "soyutils": "2014.04.22"
   }

@@ -6,11 +6,11 @@
  */
 {template .content}
 	<div id="{$id}">
-		{for $item in $items}
+		{foreach $item in $items}
 			{call Templates.NestedListItem.content}
 				{param id: $id + '-item' + index($item) /}
-				{param label: $item /}
+				{param text: $item /}
 			{/call}
-		{/for}
+		{/foreach}
 	</div>
 {/template}
