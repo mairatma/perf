@@ -1,6 +1,6 @@
 'use strict';
 
-var ReactTestCases = {
+this.ReactTestCases = { // jshint ignore:line
 	FirstRender: {
 		name: 'React',
 		beforeEach: function(element) {

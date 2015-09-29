@@ -1,6 +1,7 @@
-this.react = this.react || {};
+'use strict';
 
-this.react.NestedList = React.createClass({
+this.react = this.react || {}; // jshint ignore:line
+this.react.NestedList = React.createClass({ // jshint ignore:line
 	getInitialState: function () {
 		return { items: this.props.items };
 	},
@@ -20,7 +21,7 @@ this.react.NestedList = React.createClass({
 	}
 });
 
-this.react.NestedListItem = React.createClass({
+this.react.NestedListItem = React.createClass({ // jshint ignore:line
 	render: function() {
 		return React.createElement('div', {className: 'row'},
 			React.createElement('div', {className: 'col-md-12' },

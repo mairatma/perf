@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 YUI.add('TestList', function(Y) {
 	Y.TestList = Y.Base.create('list', Y.Widget, [], {
@@ -39,4 +39,4 @@ YUI.add('TestList', function(Y) {
       }
     }
 	});
-}, '1.0', {"requires": ["base-build", "node", "widget"]});
+}, '1.0', {'requires': ['base-build', 'node', 'widget']});

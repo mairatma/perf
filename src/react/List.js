@@ -1,5 +1,7 @@
-this.react = this.react || {};
-this.react.List = React.createClass({
+'use strict';
+
+this.react = this.react || {}; // jshint ignore:line
+this.react.List = React.createClass({ // jshint ignore:line
 	getInitialState: function () {
 		return { items: this.props.items };
 	},

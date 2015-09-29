@@ -1,9 +1,9 @@
 'use strict';
 
-var MetalTestCases = {
+this.MetalTestCases = { // jshint ignore:line
 	FirstRender: {
 		name: 'Metal.js',
-		beforeEach: function(element) {
+		beforeEach: function() {
 			this.list && this.list.dispose();
 			this.list = null;
 		},
