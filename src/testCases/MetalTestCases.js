@@ -24,5 +24,29 @@ this.MetalTestCases = { // jshint ignore:line
 				callback();
 			});
 		}
+	},
+
+	Decorate: {
+		name: 'Metal.js',
+		before: function(element, data) {
+			element.innerHTML = metal.ComponentRegistry.Templates.List.content({
+				id: 'metal-list',
+				items: data.config.items
+			})
+		},
+		beforeEach: function(element, data) {
+			if (this.list) {
+				this.list.dispose();
+				this.list = null;
+				this.before(element, data);
+			}
+		},
+		test: function(element, data, callback) {
+			this.list = new metal.List({
+				element: '#metal-list',
+				items: data.config.items
+			}).decorate();
+			callback();
+		}
 	}
 };

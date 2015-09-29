@@ -19,7 +19,7 @@ if (typeof Templates.List == 'undefined') { Templates.List = {}; }
  * @suppress {checkTypes}
  */
 Templates.List.content = function(opt_data, opt_ignored, opt_ijData) {
-  var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '">';
+  var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="component">';
   var itemList6 = opt_data.items;
   var itemListLen6 = itemList6.length;
   for (var itemIndex6 = 0; itemIndex6 < itemListLen6; itemIndex6++) {

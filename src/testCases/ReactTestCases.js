@@ -23,5 +23,16 @@ this.ReactTestCases = { // jshint ignore:line
 			});
 			callback();
 		}
+	},
+
+	Decorate: {
+		name: 'React',
+		before: function(element, data) {
+			React.render(React.createElement(react.List, data.config), element);
+		},
+		test: function(element, data, callback) {
+			React.render(React.createElement(react.List, data.config), element);
+			callback();
+		}
 	}
 };
