@@ -10,5 +10,18 @@ var ReactTestCases = {
 			React.render(React.createElement(react.List, data.config), element);
 			callback();
 		}
+	},
+
+	Update: {
+		name: 'React',
+		before: function(element, data) {
+			this.list = React.render(React.createElement(react.List, data.config), element);
+		},
+		test: function(element, data, callback) {
+			this.list.setState({
+				items: this.list.state.items === data.items2 ? data.config.items : data.items2
+			});
+			callback();
+		}
 	}
 };
