@@ -16,6 +16,7 @@
     "bootstrap": "~3.3.4",
     "metal": "liferay/metal.js#master",
     "react": "~0.13.3",
-    "soyutils": "2014.04.22"
+    "soyutils": "2014.04.22",
+    "yui": "yui3#~3.18.1"
   }
 }

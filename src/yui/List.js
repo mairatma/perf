@@ -1,7 +1,7 @@
 'use strict';
 
-YUI.add('TestList', function(Y) {
-	Y.TestList = Y.Base.create('list', Y.Widget, [], {
+YUI.add('List', function(Y) {
+	Y.List = Y.Base.create('list', Y.Widget, [], {
 		renderUI: function() {
 			this._uiSetItems();
 		},

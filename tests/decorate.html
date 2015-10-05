@@ -7,20 +7,24 @@
 
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 
-    <script src="../src/TestExecuter.js"></script>
-    <script src="../src/testCases/MetalTestCases.js"></script>
-    <script src="../src/testCases/ReactTestCases.js"></script>
-
     <script src="../bower_components/soyutils/soyutils.js"></script>
     <script src="../build/metaljs/list.js"></script>
 
     <script src="../bower_components/react/react.min.js"></script>
     <script src="../src/react/List.js"></script>
 
+    <script src="../bower_components/yui/build/yui/yui-min.js"></script>
+    <script src="../src/yui/List.js"></script>
+
+    <script src="../src/TestExecuter.js"></script>
+    <script src="../src/testCases/MetalTestCases.js"></script>
+    <script src="../src/testCases/ReactTestCases.js"></script>
+    <script src="../src/testCases/YuiTestCases.js"></script>
+
     <style>
 			.testCase {
 				float: left;
-				width: 50%;
+				width: 33%;
 			}
     </style>
 </head>
@@ -40,6 +44,7 @@
       });
       executer.addTestCase(MetalTestCases.Decorate);
       executer.addTestCase(ReactTestCases.Decorate);
+      executer.addTestCase(YuiTestCases.Decorate);
       executer.start();
     </script>
 </body>
