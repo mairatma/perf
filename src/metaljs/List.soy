@@ -2,10 +2,19 @@
 
 /**
  * @param id
- * @param items
  */
 {template .content}
 	<div id="{$id}" class="component">
+		{call .items data="all" /}
+	</div>
+{/template}
+
+/**
+ * @param id
+ * @param items
+ */
+{template .items}
+	<div id="{$id}-items">
 		{foreach $item in $items}
 			<div class="row">
 				<div class="col-md-12">

@@ -19,18 +19,33 @@ if (typeof Templates.List == 'undefined') { Templates.List = {}; }
  * @suppress {checkTypes}
  */
 Templates.List.content = function(opt_data, opt_ignored, opt_ijData) {
-  var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="component">';
-  var itemList6 = opt_data.items;
-  var itemListLen6 = itemList6.length;
-  for (var itemIndex6 = 0; itemIndex6 < itemListLen6; itemIndex6++) {
-    var itemData6 = itemList6[itemIndex6];
-    output += '<div class="row"><div class="col-md-12">' + Templates.List.item({id: opt_data.id, surfaceId: 'item' + itemIndex6, text: itemData6}, null, opt_ijData) + '</div></div>';
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="component">' + Templates.List.items(opt_data, null, opt_ijData) + '</div>');
+};
+if (goog.DEBUG) {
+  Templates.List.content.soyTemplateName = 'Templates.List.content';
+}
+
+
+/**
+ * @param {Object.<string, *>=} opt_data
+ * @param {(null|undefined)=} opt_ignored
+ * @param {Object.<string, *>=} opt_ijData
+ * @return {!soydata.SanitizedHtml}
+ * @suppress {checkTypes}
+ */
+Templates.List.items = function(opt_data, opt_ignored, opt_ijData) {
+  var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-items">';
+  var itemList12 = opt_data.items;
+  var itemListLen12 = itemList12.length;
+  for (var itemIndex12 = 0; itemIndex12 < itemListLen12; itemIndex12++) {
+    var itemData12 = itemList12[itemIndex12];
+    output += '<div class="row"><div class="col-md-12">' + Templates.List.item({id: opt_data.id, surfaceId: 'item' + itemIndex12, text: itemData12}, null, opt_ijData) + '</div></div>';
   }
   output += '</div>';
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
 };
 if (goog.DEBUG) {
-  Templates.List.content.soyTemplateName = 'Templates.List.content';
+  Templates.List.items.soyTemplateName = 'Templates.List.items';
 }
 
 
@@ -48,7 +63,8 @@ if (goog.DEBUG) {
   Templates.List.item.soyTemplateName = 'Templates.List.item';
 }
 
-Templates.List.content.params = ["id","items"];
+Templates.List.content.params = ["id"];
+Templates.List.items.params = ["id","items"];
 Templates.List.item.params = ["id","surfaceId","text"];
 export default Templates.List;
 /* jshint ignore:end */
