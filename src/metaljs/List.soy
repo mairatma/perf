@@ -20,7 +20,7 @@
 				<div class="col-md-12">
 					{call .item}
 						{param id: $id /}
-						{param surfaceId: 'item' + index($item) /}
+						{param surfaceElementId: $id + '-item' + index($item) /}
 						{param text: $item /}
 					{/call}
 				</div>
@@ -30,12 +30,11 @@
 {/template}
 
 /**
- * @param id
- * @param surfaceId
+ * @param surfaceElementId
  * @param text
  */
 {template .item}
-	<span id="{$id}-{$surfaceId}">
+	<span id="{$surfaceElementId}">
 		{$text}
 	</span>
 {/template}

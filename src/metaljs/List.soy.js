@@ -39,7 +39,7 @@ Templates.List.items = function(opt_data, opt_ignored, opt_ijData) {
   var itemListLen12 = itemList12.length;
   for (var itemIndex12 = 0; itemIndex12 < itemListLen12; itemIndex12++) {
     var itemData12 = itemList12[itemIndex12];
-    output += '<div class="row"><div class="col-md-12">' + Templates.List.item({id: opt_data.id, surfaceId: 'item' + itemIndex12, text: itemData12}, null, opt_ijData) + '</div></div>';
+    output += '<div class="row"><div class="col-md-12">' + Templates.List.item({id: opt_data.id, surfaceElementId: opt_data.id + '-item' + itemIndex12, text: itemData12}, null, opt_ijData) + '</div></div>';
   }
   output += '</div>';
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
@@ -57,7 +57,7 @@ if (goog.DEBUG) {
  * @suppress {checkTypes}
  */
 Templates.List.item = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<span id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-' + soy.$$escapeHtmlAttribute(opt_data.surfaceId) + '">' + soy.$$escapeHtml(opt_data.text) + '</span>');
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<span id="' + soy.$$escapeHtmlAttribute(opt_data.surfaceElementId) + '">' + soy.$$escapeHtml(opt_data.text) + '</span>');
 };
 if (goog.DEBUG) {
   Templates.List.item.soyTemplateName = 'Templates.List.item';
@@ -65,6 +65,6 @@ if (goog.DEBUG) {
 
 Templates.List.content.params = ["id"];
 Templates.List.items.params = ["id","items"];
-Templates.List.item.params = ["id","surfaceId","text"];
+Templates.List.item.params = ["surfaceElementId","text"];
 export default Templates.List;
 /* jshint ignore:end */

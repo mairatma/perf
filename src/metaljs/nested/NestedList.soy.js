@@ -20,11 +20,11 @@ if (typeof Templates.NestedList == 'undefined') { Templates.NestedList = {}; }
  */
 Templates.NestedList.content = function(opt_data, opt_ignored, opt_ijData) {
   var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '">';
-  var itemList34 = opt_data.items;
-  var itemListLen34 = itemList34.length;
-  for (var itemIndex34 = 0; itemIndex34 < itemListLen34; itemIndex34++) {
-    var itemData34 = itemList34[itemIndex34];
-    output += Templates.NestedListItem.content({id: opt_data.id + '-item' + itemIndex34, text: itemData34}, null, opt_ijData);
+  var itemList32 = opt_data.items;
+  var itemListLen32 = itemList32.length;
+  for (var itemIndex32 = 0; itemIndex32 < itemListLen32; itemIndex32++) {
+    var itemData32 = itemList32[itemIndex32];
+    output += Templates.NestedListItem.content({id: opt_data.id + '-item' + itemIndex32, text: itemData32}, null, opt_ijData);
   }
   output += '</div>';
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
