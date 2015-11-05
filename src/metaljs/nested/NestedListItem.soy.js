@@ -1,6 +1,10 @@
 /* jshint ignore:start */
+import Component from 'bower:metal/src/component/Component';
 import ComponentRegistry from 'bower:metal/src/component/ComponentRegistry';
-var Templates = ComponentRegistry.Templates;
+import SoyAop from 'bower:metal/src/soy/SoyAop';
+import SoyRenderer from 'bower:metal/src/soy/SoyRenderer';
+import SoyTemplates from 'bower:metal/src/soy/SoyTemplates';
+var Templates = SoyTemplates.get();
 // This file was automatically generated from NestedListItem.soy.
 // Please don't edit this file by hand.
 
@@ -42,5 +46,14 @@ if (goog.DEBUG) {
 
 Templates.NestedListItem.content.params = ["id","text"];
 Templates.NestedListItem.text.params = ["id","text"];
-export default Templates.NestedListItem;
+
+class NestedListItem extends Component {
+  static setImpl(ctor) {
+    ComponentRegistry.register(ctor, 'NestedListItem');
+  }
+}
+NestedListItem.RENDERER = SoyRenderer;
+NestedListItem.setImpl(NestedListItem);
+SoyAop.registerTemplates('NestedListItem');
+export default NestedListItem;
 /* jshint ignore:end */

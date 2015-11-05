@@ -34,7 +34,7 @@ this.YuiTestCases = { // jshint ignore:line
 		name: 'YUI',
 		before: function(element, data) {
 			this.Y = YUI({ useSync: true }).use('List');
-			element.innerHTML = metal.ComponentRegistry.Templates.List.content({
+			element.innerHTML = metal.SoyTemplates.get('List', 'content')({
 				id: 'yui-list',
 				items: data.config.items
 			});
@@ -43,7 +43,7 @@ this.YuiTestCases = { // jshint ignore:line
 			if (this.list) {
 				this.list.destroy();
 				this.list = null;
-				element.innerHTML = metal.ComponentRegistry.Templates.List.content({
+				element.innerHTML = metal.SoyTemplates.get('List', 'content')({
 					id: 'yui-list',
 					items: data.config.items
 				});

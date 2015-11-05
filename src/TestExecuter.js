@@ -32,7 +32,7 @@ TestExecuter.prototype.runTest = function(testCase, element) {
 	testCase.beforeEach && testCase.beforeEach(container, this.data_);
 
 	var timeElement = element.querySelector('.runTime');
-	timeElement.innerHTML = 'Running...';
+	//timeElement.innerHTML = 'Running...';
 
 	var initialTime = Date.now();
 	testCase.test(container, this.data_, function() {

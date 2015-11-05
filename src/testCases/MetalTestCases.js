@@ -20,7 +20,7 @@ this.MetalTestCases = { // jshint ignore:line
 		},
 		test: function(element, data, callback) {
 			this.list.items = this.list.items === data.items2 ? data.config.items : data.items2;
-			this.list.once('attrsChanged', function() {
+			this.list.once('attrsSynced', function() {
 				callback();
 			});
 		}
@@ -29,10 +29,10 @@ this.MetalTestCases = { // jshint ignore:line
 	Decorate: {
 		name: 'Metal.js',
 		before: function(element, data) {
-			element.innerHTML = metal.ComponentRegistry.Templates.List.content({
+			element.innerHTML = metal.SoyTemplates.get('List', 'content')({
 				id: 'metal-list',
 				items: data.config.items
-			})
+			});
 		},
 		beforeEach: function(element, data) {
 			if (this.list) {
