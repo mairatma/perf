@@ -28,7 +28,7 @@ this.ReactTestCases = { // jshint ignore:line
 	Decorate: {
 		name: 'React',
 		before: function(element, data) {
-			element.innerHTML = metal.SoyTemplates.get('List', 'content')({
+			element.innerHTML = metal.SoyTemplates.get('List', 'render')({
 				id: 'react-list',
 				items: data.config.items
 			});

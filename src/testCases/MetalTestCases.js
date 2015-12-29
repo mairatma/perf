@@ -29,7 +29,7 @@ this.MetalTestCases = { // jshint ignore:line
 	Decorate: {
 		name: 'Metal.js',
 		before: function(element, data) {
-			element.innerHTML = metal.SoyTemplates.get('List', 'content')({
+			element.innerHTML = metal.SoyTemplates.get('List', 'render')({
 				id: 'metal-list',
 				items: data.config.items
 			});

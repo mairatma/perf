@@ -1,6 +1,5 @@
 /* jshint ignore:start */
 import Component from 'bower:metal/src/component/Component';
-import ComponentRegistry from 'bower:metal/src/component/ComponentRegistry';
 import SoyAop from 'bower:metal/src/soy/SoyAop';
 import SoyRenderer from 'bower:metal/src/soy/SoyRenderer';
 import SoyTemplates from 'bower:metal/src/soy/SoyTemplates';
@@ -22,11 +21,11 @@ if (typeof Templates.List == 'undefined') { Templates.List = {}; }
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.List.content = function(opt_data, opt_ignored, opt_ijData) {
+Templates.List.render = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="component">' + Templates.List.items(opt_data, null, opt_ijData) + '</div>');
 };
 if (goog.DEBUG) {
-  Templates.List.content.soyTemplateName = 'Templates.List.content';
+  Templates.List.render.soyTemplateName = 'Templates.List.render';
 }
 
 
@@ -67,17 +66,12 @@ if (goog.DEBUG) {
   Templates.List.item.soyTemplateName = 'Templates.List.item';
 }
 
-Templates.List.content.params = ["id"];
+Templates.List.render.params = ["id"];
 Templates.List.items.params = ["id","items"];
 Templates.List.item.params = ["surfaceElementId","text"];
 
-class List extends Component {
-  static setImpl(ctor) {
-    ComponentRegistry.register(ctor, 'List');
-  }
-}
+class List extends Component {}
 List.RENDERER = SoyRenderer;
-List.setImpl(List);
 SoyAop.registerTemplates('List');
 export default List;
 /* jshint ignore:end */

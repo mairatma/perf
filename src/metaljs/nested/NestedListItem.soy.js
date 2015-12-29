@@ -1,6 +1,5 @@
 /* jshint ignore:start */
 import Component from 'bower:metal/src/component/Component';
-import ComponentRegistry from 'bower:metal/src/component/ComponentRegistry';
 import SoyAop from 'bower:metal/src/soy/SoyAop';
 import SoyRenderer from 'bower:metal/src/soy/SoyRenderer';
 import SoyTemplates from 'bower:metal/src/soy/SoyTemplates';
@@ -22,11 +21,11 @@ if (typeof Templates.NestedListItem == 'undefined') { Templates.NestedListItem =
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.NestedListItem.content = function(opt_data, opt_ignored, opt_ijData) {
+Templates.NestedListItem.render = function(opt_data, opt_ignored, opt_ijData) {
   return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div class="row"><div class="col-md-12">' + Templates.NestedListItem.text(opt_data, null, opt_ijData) + '</div></div>');
 };
 if (goog.DEBUG) {
-  Templates.NestedListItem.content.soyTemplateName = 'Templates.NestedListItem.content';
+  Templates.NestedListItem.render.soyTemplateName = 'Templates.NestedListItem.render';
 }
 
 
@@ -44,16 +43,11 @@ if (goog.DEBUG) {
   Templates.NestedListItem.text.soyTemplateName = 'Templates.NestedListItem.text';
 }
 
-Templates.NestedListItem.content.params = ["id","text"];
+Templates.NestedListItem.render.params = ["id","text"];
 Templates.NestedListItem.text.params = ["id","text"];
 
-class NestedListItem extends Component {
-  static setImpl(ctor) {
-    ComponentRegistry.register(ctor, 'NestedListItem');
-  }
-}
+class NestedListItem extends Component {}
 NestedListItem.RENDERER = SoyRenderer;
-NestedListItem.setImpl(NestedListItem);
 SoyAop.registerTemplates('NestedListItem');
 export default NestedListItem;
 /* jshint ignore:end */

@@ -4,10 +4,10 @@
  * @param id
  * @param items
  */
-{template .content}
+{template .render}
 	<div id="{$id}">
 		{foreach $item in $items}
-			{call Templates.NestedListItem.content}
+			{call Templates.NestedListItem.render}
 				{param id: $id + '-item' + index($item) /}
 				{param text: $item /}
 			{/call}
