@@ -1,43 +1,67 @@
 /* jshint ignore:start */
-import Component from 'metal-component';
-import { SoyAop, SoyRenderer, SoyTemplates } from 'metal-soy';
-var Templates = SoyTemplates.get();
+import Component from 'metal-component/src/Component';
+import Soy from 'metal-soy/src/Soy';
+var templates;
+goog.loadModule(function(exports) {
+
 // This file was automatically generated from NestedList.soy.
 // Please don't edit this file by hand.
 
 /**
- * @fileoverview Templates in namespace Templates.NestedList.
+ * @fileoverview Templates in namespace NestedList.
+ * @public
  */
 
-if (typeof Templates.NestedList == 'undefined') { Templates.NestedList = {}; }
+goog.module('NestedList.incrementaldom');
+
+var soy = goog.require('soy');
+var soydata = goog.require('soydata');
+/** @suppress {extraRequire} */
+goog.require('goog.i18n.bidi');
+/** @suppress {extraRequire} */
+goog.require('goog.asserts');
+var IncrementalDom = goog.require('incrementaldom');
+var ie_open = IncrementalDom.elementOpen;
+var ie_close = IncrementalDom.elementClose;
+var ie_void = IncrementalDom.elementVoid;
+var ie_open_start = IncrementalDom.elementOpenStart;
+var ie_open_end = IncrementalDom.elementOpenEnd;
+var itext = IncrementalDom.text;
+var iattr = IncrementalDom.attr;
+
+var $templateAlias1 = Soy.getTemplate('NestedListItem.incrementaldom', 'render');
 
 
 /**
- * @param {Object.<string, *>=} opt_data
+ * @param {Object<string, *>=} opt_data
  * @param {(null|undefined)=} opt_ignored
- * @param {Object.<string, *>=} opt_ijData
- * @return {!soydata.SanitizedHtml}
+ * @param {Object<string, *>=} opt_ijData
+ * @return {void}
  * @suppress {checkTypes}
  */
-Templates.NestedList.render = function(opt_data, opt_ignored, opt_ijData) {
-  var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '">';
-  var itemList32 = opt_data.items;
-  var itemListLen32 = itemList32.length;
-  for (var itemIndex32 = 0; itemIndex32 < itemListLen32; itemIndex32++) {
-    var itemData32 = itemList32[itemIndex32];
-    output += Templates.NestedListItem.render({id: opt_data.id + '-item' + itemIndex32, text: itemData32}, null, opt_ijData);
-  }
-  output += '</div>';
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
-};
+function $render(opt_data, opt_ignored, opt_ijData) {
+  ie_open('div');
+    var itemList18 = opt_data.items;
+    var itemListLen18 = itemList18.length;
+    for (var itemIndex18 = 0; itemIndex18 < itemListLen18; itemIndex18++) {
+      var itemData18 = itemList18[itemIndex18];
+      $templateAlias1({key: 'item' + itemIndex18, text: itemData18}, null, opt_ijData);
+    }
+  ie_close('div');
+}
+exports.render = $render;
 if (goog.DEBUG) {
-  Templates.NestedList.render.soyTemplateName = 'Templates.NestedList.render';
+  $render.soyTemplateName = 'NestedList.render';
 }
 
-Templates.NestedList.render.params = ["id","items"];
+exports.render.params = ["items"];
+templates = exports;
+return exports;
+
+});
 
 class NestedList extends Component {}
-NestedList.RENDERER = SoyRenderer;
-SoyAop.registerTemplates('NestedList');
-export default NestedList;
+Soy.register(NestedList, templates);
+export default templates;
+export { NestedList, templates };
 /* jshint ignore:end */

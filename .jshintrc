@@ -9,7 +9,9 @@
 	"expr": true,
 	"forin": false,
 	"globals": {
+		"IncrementalDOM": true,
 		"metal": true,
+		"metalNamed": true,
 		"MetalTestCases": true,
 		"react": true,
 		"React": true,

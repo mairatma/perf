@@ -28,9 +28,8 @@ this.ReactTestCases = { // jshint ignore:line
 	Decorate: {
 		name: 'React',
 		before: function(element, data) {
-			element.innerHTML = metal.SoyTemplates.get('List', 'render')({
-				id: 'react-list',
-				items: data.config.items
+			IncrementalDOM.patch(element, function() {
+				metalNamed.List.List.TEMPLATE({items: data.config.items});
 			});
 		},
 		test: function(element, data, callback) {

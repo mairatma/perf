@@ -1,40 +1,18 @@
-{namespace Templates.List}
+{namespace List}
 
 /**
- * @param id
- */
-{template .render}
-	<div id="{$id}" class="component">
-		{call .items data="all" /}
-	</div>
-{/template}
-
-/**
- * @param id
  * @param items
  */
-{template .items}
-	<div id="{$id}-items">
+{template .render}
+	<div class="list">
 		{foreach $item in $items}
 			<div class="row">
 				<div class="col-md-12">
-					{call .item}
-						{param id: $id /}
-						{param surfaceElementId: $id + '-item' + index($item) /}
-						{param text: $item /}
-					{/call}
+					<span key="item{index($item)}">
+						{$item}
+					</span>
 				</div>
 			</div>
 		{/foreach}
 	</div>
-{/template}
-
-/**
- * @param surfaceElementId
- * @param text
- */
-{template .item}
-	<span id="{$surfaceElementId}">
-		{$text}
-	</span>
 {/template}

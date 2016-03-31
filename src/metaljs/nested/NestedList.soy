@@ -1,14 +1,13 @@
-{namespace Templates.NestedList}
+{namespace NestedList}
 
 /**
- * @param id
  * @param items
  */
 {template .render}
-	<div id="{$id}">
+	<div>
 		{foreach $item in $items}
-			{call Templates.NestedListItem.render}
-				{param id: $id + '-item' + index($item) /}
+			{call NestedListItem.render}
+				{param key: 'item' + index($item) /}
 				{param text: $item /}
 			{/call}
 		{/foreach}

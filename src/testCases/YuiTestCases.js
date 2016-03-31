@@ -34,24 +34,22 @@ this.YuiTestCases = { // jshint ignore:line
 		name: 'YUI',
 		before: function(element, data) {
 			this.Y = YUI({ useSync: true }).use('List');
-			element.innerHTML = metal.SoyTemplates.get('List', 'render')({
-				id: 'yui-list',
-				items: data.config.items
+			IncrementalDOM.patch(element, function() {
+				metalNamed.List.List.TEMPLATE({items: data.config.items});
 			});
 		},
 		beforeEach: function(element, data) {
 			if (this.list) {
 				this.list.destroy();
 				this.list = null;
-				element.innerHTML = metal.SoyTemplates.get('List', 'render')({
-					id: 'yui-list',
-					items: data.config.items
+				IncrementalDOM.patch(element, function() {
+					metalNamed.List.List.TEMPLATE({items: data.config.items});
 				});
 			}
 		},
 		test: function(element, data, callback) {
 			this.list = new this.Y.List({
-				contentBox: '#yui-list',
+				contentBox: element.childNodes[0],
 				items: data.config.items
 			}).render();
 			callback();

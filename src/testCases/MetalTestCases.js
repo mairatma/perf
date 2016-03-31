@@ -8,7 +8,7 @@ this.MetalTestCases = { // jshint ignore:line
 			this.list = null;
 		},
 		test: function(element, data, callback) {
-			this.list = new metal.List(data.config).render(element);
+			this.list = new metalNamed.List.List(data.config).render(element);
 			callback();
 		}
 	},
@@ -16,11 +16,11 @@ this.MetalTestCases = { // jshint ignore:line
 	Update: {
 		name: 'Metal.js',
 		before: function(element, data) {
-			this.list = new metal.List(data.config).render(element);
+			this.list = new metalNamed.List.List(data.config).render(element);
 		},
 		test: function(element, data, callback) {
 			this.list.items = this.list.items === data.items2 ? data.config.items : data.items2;
-			this.list.once('attrsSynced', function() {
+			this.list.once('stateSynced', function() {
 				callback();
 			});
 		}
@@ -29,9 +29,8 @@ this.MetalTestCases = { // jshint ignore:line
 	Decorate: {
 		name: 'Metal.js',
 		before: function(element, data) {
-			element.innerHTML = metal.SoyTemplates.get('List', 'render')({
-				id: 'metal-list',
-				items: data.config.items
+			IncrementalDOM.patch(element, function() {
+				metalNamed.List.List.TEMPLATE({items: data.config.items});
 			});
 		},
 		beforeEach: function(element, data) {
@@ -42,10 +41,10 @@ this.MetalTestCases = { // jshint ignore:line
 			}
 		},
 		test: function(element, data, callback) {
-			this.list = new metal.List({
-				element: '#metal-list',
+			this.list = new metalNamed.List.List({
+				element: element.childNodes[0],
 				items: data.config.items
-			}).decorate();
+			}).render();
 			callback();
 		}
 	}
