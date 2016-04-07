@@ -8,7 +8,7 @@ this.MetalTestCases = { // jshint ignore:line
 			this.list = null;
 		},
 		test: function(element, data, callback) {
-			this.list = new metalNamed.List.List(data.config).render(element);
+			this.list = new metalNamed.List.List(data.config, element);
 			callback();
 		}
 	},
@@ -16,7 +16,7 @@ this.MetalTestCases = { // jshint ignore:line
 	Update: {
 		name: 'Metal.js',
 		before: function(element, data) {
-			this.list = new metalNamed.List.List(data.config).render(element);
+			this.list = new metalNamed.List.List(data.config, element);
 		},
 		test: function(element, data, callback) {
 			this.list.items = this.list.items === data.items2 ? data.config.items : data.items2;
@@ -44,7 +44,7 @@ this.MetalTestCases = { // jshint ignore:line
 			this.list = new metalNamed.List.List({
 				element: element.childNodes[0],
 				items: data.config.items
-			}).render();
+			});
 			callback();
 		}
 	}
