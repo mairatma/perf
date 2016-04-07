@@ -14,7 +14,9 @@ goog.loadModule(function(exports) {
 
 goog.module('List.incrementaldom');
 
+/** @suppress {extraRequire} */
 var soy = goog.require('soy');
+/** @suppress {extraRequire} */
 var soydata = goog.require('soydata');
 /** @suppress {extraRequire} */
 goog.require('goog.i18n.bidi');
@@ -39,7 +41,7 @@ var iattr = IncrementalDom.attr;
  */
 function $render(opt_data, opt_ignored, opt_ijData) {
   ie_open('div', null, null,
-      'class', 'component');
+      'class', 'list');
     var itemList9 = opt_data.items;
     var itemListLen9 = itemList9.length;
     for (var itemIndex9 = 0; itemIndex9 < itemListLen9; itemIndex9++) {
