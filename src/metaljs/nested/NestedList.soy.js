@@ -57,6 +57,7 @@ if (goog.DEBUG) {
 }
 
 exports.render.params = ["items"];
+exports.render.types = {"items":"any"};
 templates = exports;
 return exports;
 

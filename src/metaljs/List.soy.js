@@ -46,12 +46,12 @@ function $render(opt_data, opt_ignored, opt_ijData) {
     var itemListLen9 = itemList9.length;
     for (var itemIndex9 = 0; itemIndex9 < itemListLen9; itemIndex9++) {
       var itemData9 = itemList9[itemIndex9];
-      ie_open('div', null, null,
-          'class', 'row');
+      ie_open('div', 'item' + itemIndex9, null,
+          'class', 'row',
+          'key', 'item' + itemIndex9);
         ie_open('div', null, null,
             'class', 'col-md-12');
-          ie_open('span', 'item' + itemIndex9, null,
-              'key', 'item' + itemIndex9);
+          ie_open('span');
             itext((goog.asserts.assert((itemData9) != null), itemData9));
           ie_close('span');
         ie_close('div');
@@ -65,6 +65,7 @@ if (goog.DEBUG) {
 }
 
 exports.render.params = ["items"];
+exports.render.types = {"items":"any"};
 templates = exports;
 return exports;
 
