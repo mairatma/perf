@@ -19,6 +19,7 @@
     <script src="../node_modules/yui/yui/yui-min.js"></script>
     <script src="../src/yui/List.js"></script>
 
+    <script src="./suites/FirstRender.js"></script>
     <script src="./MetalPerf.js"></script>
 
     <style>
@@ -65,50 +66,7 @@
       <canvas id="chart" class="hidden" width="400" height="400"></canvas>
     </div>
     <script>
-      YUI().use(['List'], function(Y) {
-        var data = {items: []};
-        for (i = 0; i < 1000; i++) {
-          data.items.push('Item ' + (i + 1));
-        }
-
-        var element;
-        function createElement() {
-          if (element && element.parentNode) {
-            document.body.removeChild(element);
-          }
-          element = document.createElement('div');
-          element.style.opacity = 0;
-          document.body.appendChild(element);
-        }
-
-        var suite = new Benchmark.Suite;
-
-        suite.add({
-          name: 'Metal',
-          fn: function() {
-            createElement();
-            new metalNamed.List.List(data, element);
-          }
-        });
-
-        suite.add({
-          name: 'React',
-          fn: function() {
-            createElement();
-            React.render(React.createElement(react.List, data), element);
-          }
-        });
-
-        suite.add({
-          name: 'YUI',
-          fn: function() {
-            createElement();
-            new Y.List(data).render(element);
-          }
-        });
-
-        MetalPerf.run(suite);
-      });
+      MetalPerf.run(FirstRender.addToSuite(new Benchmark.Suite()));
     </script>
 </body>
 </html>
