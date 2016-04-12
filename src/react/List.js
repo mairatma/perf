@@ -17,6 +17,6 @@ this.react.List = React.createClass({ // jshint ignore:line
 				)
 			);
 		}
-		return React.createElement('div', null, items);
+		return React.createElement('div', { className: 'list' }, items);
 	}
 });

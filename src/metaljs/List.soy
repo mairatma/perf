@@ -6,11 +6,9 @@
 {template .render}
 	<div class="list">
 		{foreach $item in $items}
-			<div class="row">
+			<div class="row" key="item{index($item)}">
 				<div class="col-md-12">
-					<span key="item{index($item)}">
-						{$item}
-					</span>
+					<span>{$item}</span>
 				</div>
 			</div>
 		{/foreach}

@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 
+    <script src="../node_modules/lodash/lodash.js"></script>
+    <script src="../node_modules/benchmark/benchmark.js"></script>
+
     <script src="../build/metaljs/list.js"></script>
 
     <script src="../node_modules/react/dist/react.min.js"></script>
@@ -15,36 +18,115 @@
     <script src="../node_modules/yui/yui/yui-min.js"></script>
     <script src="../src/yui/List.js"></script>
 
-    <script src="../src/TestExecuter.js"></script>
-    <script src="../src/testCases/MetalTestCases.js"></script>
-    <script src="../src/testCases/ReactTestCases.js"></script>
-    <script src="../src/testCases/YuiTestCases.js"></script>
+    <script src="./MetalPerf.js"></script>
 
     <style>
-			.testCase {
-				float: left;
-				width: 33%;
-			}
+			#result {
+        padding: 15px;
+      }
+
+      .header-test {
+        width: 30%;
+      }
+
+      .header-result {
+        width: 70%;
+      }
     </style>
 </head>
 <body>
     <h1>Perf - Decorate</h1>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="header-test">Test Case</th>
+            <th class="header-result">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Metal</th>
+            <td id="Metal">Pending</td>
+          </tr>
+          <tr>
+            <th scope="row">React</th>
+            <td id="React">Pending</td>
+          </tr>
+          <tr>
+            <th scope="row">YUI</th>
+            <td id="YUI">Pending</td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="result" class="bg-info hidden"></p>
+    </div>
     <script>
-      var items = [];
-      for (i = 0; i < 1000; i++) {
-        items.push('Item ' + (i + 1));
-      }
+      YUI().use(['List'], function(Y) {
+        var data = {items: []};
+        for (i = 0; i < 1000; i++) {
+          data.items.push('Item ' + (i + 1));
+        }
 
-      window.executer = new TestExecuter();
-      executer.setCommonTestData({
-      	config: {
-      		items: items
-      	}
+        var element;
+        function createElement() {
+          if (element && element.parentNode) {
+            document.body.removeChild(element);
+          }
+
+          element = document.createElement('div');
+          element.style.opacity = 0;
+          document.body.appendChild(element);
+
+          IncrementalDOM.patch(element, function() {
+    				metalNamed.List.List.TEMPLATE(data);
+    			});
+        }
+
+        var list;
+        var suite = new Benchmark.Suite;
+
+        suite.add({
+          name: 'Metal',
+          fn: function() {
+            list = new metalNamed.List.List({
+              element: element.childNodes[0],
+              items: data.items
+            });
+          },
+          onStart: createElement,
+          onCycle: function() {
+            createElement();
+            list.dispose();
+          }
+        });
+
+        suite.add({
+          name: 'React',
+          fn: function() {
+            React.render(React.createElement(react.List, data), element);
+          },
+          onStart: createElement,
+          onCycle: createElement
+        });
+
+        suite.add({
+          name: 'YUI',
+          fn: function() {
+            list = new Y.List({
+      				contentBox: element.childNodes[0],
+      				items: data.items
+      			}).render();
+          },
+          onStart: createElement,
+          onCycle: function() {
+            createElement();
+            list.destroy();
+          }
+        });
+
+        MetalPerf.run(suite);
       });
-      executer.addTestCase(MetalTestCases.Decorate);
-      executer.addTestCase(ReactTestCases.Decorate);
-      executer.addTestCase(YuiTestCases.Decorate);
-      executer.start();
     </script>
 </body>
 </html>
