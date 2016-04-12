@@ -74,42 +74,33 @@
             document.body.removeChild(element);
           }
           element = document.createElement('div');
+          element.style.opacity = 0;
           document.body.appendChild(element);
         }
 
-        var list;
         var suite = new Benchmark.Suite;
 
         suite.add({
           name: 'Metal',
           fn: function() {
-            list = new metalNamed.List.List(data, element);
-          },
-          onStart: createElement,
-          onCycle: function() {
             createElement();
-            list.dispose();
+            new metalNamed.List.List(data, element);
           }
         });
 
         suite.add({
           name: 'React',
           fn: function() {
+            createElement();
             React.render(React.createElement(react.List, data), element);
-          },
-          onStart: createElement,
-          onCycle: createElement
+          }
         });
 
         suite.add({
           name: 'YUI',
           fn: function() {
-            list = new Y.List(data).render(element);
-          },
-          onStart: createElement,
-          onCycle: function() {
             createElement();
-            list.destroy();
+            new Y.List(data).render(element);
           }
         });
 

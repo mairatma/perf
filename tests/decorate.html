@@ -83,45 +83,35 @@
     			});
         }
 
-        var list;
         var suite = new Benchmark.Suite;
 
         suite.add({
           name: 'Metal',
           fn: function() {
-            list = new metalNamed.List.List({
+            createElement();
+            new metalNamed.List.List({
               element: element.childNodes[0],
               items: data.items
             });
-          },
-          onStart: createElement,
-          onCycle: function() {
-            createElement();
-            list.dispose();
           }
         });
 
         suite.add({
           name: 'React',
           fn: function() {
+            createElement();
             React.render(React.createElement(react.List, data), element);
-          },
-          onStart: createElement,
-          onCycle: createElement
+          }
         });
 
         suite.add({
           name: 'YUI',
           fn: function() {
-            list = new Y.List({
+            createElement();
+            new Y.List({
       				contentBox: element.childNodes[0],
       				items: data.items
       			}).render();
-          },
-          onStart: createElement,
-          onCycle: function() {
-            createElement();
-            list.destroy();
           }
         });
 
