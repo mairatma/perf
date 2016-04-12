@@ -15,6 +15,7 @@
   "dependencies": {
     "benchmark": "^2.1.0",
     "bootstrap": "^3.3.6",
+    "chart.js": "^2.0.0",
     "gulp": "^3.8.11",
     "gulp-metal": "^1.0.0",
     "metal": "metal/metal.js#master",

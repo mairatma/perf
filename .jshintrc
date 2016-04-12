@@ -12,10 +12,9 @@
 		"IncrementalDOM": true,
 		"metal": true,
 		"metalNamed": true,
-		"MetalTestCases": true,
+		"MetalPerf": true,
 		"react": true,
 		"React": true,
-		"ReactTestCases": true,
 		"soy": true,
 		"soydata": true,
 		"YUI": true
