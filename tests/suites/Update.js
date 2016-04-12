@@ -1,7 +1,7 @@
 'use strict';
 
 window.Update = {
-	addToSuite(suite) {
+	addToSuite(suite, opt_suffix) {
 		var items = [];
 		for (var i = 0; i < 1000; i++) {
 			items.push('Item ' + (i + 1));
@@ -22,7 +22,7 @@ window.Update = {
 
 		var list;
 		suite.add({
-			name: 'Metal',
+			name: 'Metal' + (opt_suffix || ''),
 			defer: true,
 			fn: function(deferred) {
 				list.items = list.items === items2 ? items : items2;
@@ -40,7 +40,7 @@ window.Update = {
 		});
 
 		suite.add({
-			name: 'React',
+			name: 'React' + (opt_suffix || ''),
 			fn: function() {
 				list.setState({
 					items: list.state.items === items2 ? items : items2
@@ -53,7 +53,7 @@ window.Update = {
 		});
 
 		suite.add({
-			name: 'YUI',
+			name: 'YUI' + (opt_suffix || ''),
 			fn: function() {
 				list.set('items', list.get('items') === items2 ? items : items2);
 			},

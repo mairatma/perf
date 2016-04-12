@@ -3,6 +3,8 @@
 window.MetalPerf = { // jshint ignore:line
 	results: {},
 
+	labels: ['ops/sec'],
+
 	run(suite) {
 		YUI().use(['List'], function(Y) {
 			window.Y = Y;
@@ -13,7 +15,22 @@ window.MetalPerf = { // jshint ignore:line
 				.on('cycle', function(event) {
 					var text = String(event.target).substr(event.target.name.length + 3);
 					document.querySelector('#' + event.target.name).textContent = text;
-					MetalPerf.results[event.target.name] = event.target.hz;
+
+					var split = event.target.name.split('-');
+					var mainName = split[0];
+					if (!MetalPerf.results[mainName]) {
+						MetalPerf.results[mainName] = [];
+					}
+					MetalPerf.results[mainName].push(event.target.hz);
+
+					if (split[1]) {
+						if (MetalPerf.labels[0] === 'ops/sec') {
+							MetalPerf.labels = [];
+						}
+						if (MetalPerf.labels.indexOf(split[1]) === -1) {
+							MetalPerf.labels.push(split[1]);
+						}
+					}
 				})
 				.on('complete', function() {
 					var result = document.querySelector('#result');
@@ -22,25 +39,26 @@ window.MetalPerf = { // jshint ignore:line
 
 	        var chartElement = document.querySelector('#chart');
 					metal.dom.removeClasses(chartElement, 'hidden');
+
 					var chart = new window.Chart(chartElement, {
 	          type: 'bar',
 	          data: {
-	  			    labels: ['ops/sec'],
+	  			    labels: MetalPerf.labels,
 	  			    datasets: [
 	  			        {
 	                    backgroundColor: 'rgba(0,0,256,0.2)',
 	  			            label: 'Metal',
-	  			            data: [MetalPerf.results.Metal]
+	  			            data: MetalPerf.results.Metal
 	  			        },
 	  			        {
 	                    backgroundColor: 'rgba(0,256,0,0.2)',
 	  			            label: 'React',
-	  			            data: [MetalPerf.results.React]
+	  			            data: MetalPerf.results.React
 	  			        },
 	  			        {
 	                    backgroundColor: 'rgba(256,0,0,0.2)',
 	  			            label: 'YUI',
-	  			            data: [MetalPerf.results.YUI]
+	  			            data: MetalPerf.results.YUI
 	  			        }
 	  			    ]
 	          },

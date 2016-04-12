@@ -1,7 +1,7 @@
 'use strict';
 
 window.Decorate = {
-	addToSuite(suite) {
+	addToSuite(suite, opt_suffix) {
 		var data = {items: []};
 		for (var i = 0; i < 1000; i++) {
 			data.items.push('Item ' + (i + 1));
@@ -23,7 +23,7 @@ window.Decorate = {
 		}
 
 		suite.add({
-			name: 'Metal',
+			name: 'Metal' + (opt_suffix || ''),
 			fn: function() {
 				createElement();
 				new metalNamed.List.List({
@@ -34,7 +34,7 @@ window.Decorate = {
 		});
 
 		suite.add({
-			name: 'React',
+			name: 'React' + (opt_suffix || ''),
 			fn: function() {
 				createElement();
 				React.render(React.createElement(react.List, data), element);
@@ -42,7 +42,7 @@ window.Decorate = {
 		});
 
 		suite.add({
-			name: 'YUI',
+			name: 'YUI' + (opt_suffix || ''),
 			fn: function() {
 				createElement();
 				new Y.List({

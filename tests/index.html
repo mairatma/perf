@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perf - All</title>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script src="../node_modules/lodash/lodash.js"></script>
+    <script src="../node_modules/benchmark/benchmark.js"></script>
+    <script src="../node_modules/chart.js/dist/Chart.js"></script>
+
+    <script src="../build/metaljs/list.js"></script>
+
+    <script src="../node_modules/react/dist/react.min.js"></script>
+    <script src="../src/react/List.js"></script>
+
+    <script src="../node_modules/yui/yui/yui-min.js"></script>
+    <script src="../src/yui/List.js"></script>
+
+		<script src="./suites/FirstRender.js"></script>
+		<script src="./suites/Update.js"></script>
+    <script src="./suites/Decorate.js"></script>
+    <script src="./MetalPerf.js"></script>
+
+    <style>
+			#result {
+        padding: 15px;
+      }
+
+      .header-test {
+        width: 25%;
+      }
+
+      .header-result {
+        width: 25%;
+      }
+    </style>
+</head>
+<body>
+    <h1>Perf - All</h1>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="header-test">Test Case</th>
+            <th class="header-result">First Render</th>
+						<th class="header-result">Update</th>
+						<th class="header-result">Decorate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Metal</th>
+            <td id="Metal-firstRender">Pending</td>
+						<td id="Metal-update">Pending</td>
+						<td id="Metal-decorate">Pending</td>
+          </tr>
+          <tr>
+            <th scope="row">React</th>
+            <td id="React-firstRender">Pending</td>
+						<td id="React-update">Pending</td>
+						<td id="React-decorate">Pending</td>
+          </tr>
+          <tr>
+            <th scope="row">YUI</th>
+            <td id="YUI-firstRender">Pending</td>
+						<td id="YUI-update">Pending</td>
+						<td id="YUI-decorate">Pending</td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="result" class="bg-info hidden"></p>
+      <div><a id="download" class="btn btn-primary hidden">Download chart image</a></div>
+      <canvas id="chart" class="hidden" width="400" height="400"></canvas>
+    </div>
+    <script>
+			var suite = new Benchmark.Suite();
+			FirstRender.addToSuite(suite, '-firstRender');
+			Update.addToSuite(suite, '-update');
+			Decorate.addToSuite(suite, '-decorate');
+      MetalPerf.run(suite);
+    </script>
+</body>
+</html>
