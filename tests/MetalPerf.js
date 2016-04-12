@@ -50,9 +50,16 @@ window.MetalPerf = { // jshint ignore:line
       							beginAtZero: true
       						}
       					}]
-      			}
+      			},
+						animation: false
           }
 				});
+
+
+				var downloadButton = document.querySelector('#download');
+				metal.dom.removeClasses(downloadButton, 'hidden');
+				downloadButton.download = 'chart.png';
+				downloadButton.href = chart.toBase64Image();
 			})
 			.run({async: true});
 	}
