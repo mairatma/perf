@@ -3,7 +3,7 @@
 window.MetalPerf = { // jshint ignore:line
 	results: {},
 
-	labels: ['ops/sec'],
+	labels: [],
 
 	run(suite) {
 		YUI().use(['List'], function(Y) {
@@ -65,11 +65,15 @@ window.MetalPerf = { // jshint ignore:line
 	          options: {
 	            responsive: false,
 	            scales: {
-	      				yAxes: [{
-	      						ticks: {
-	      							beginAtZero: true
-	      						}
-	      					}]
+								yAxes: [{
+									ticks: {
+										beginAtZero: true
+									},
+									scaleLabel: {
+										display: true,
+										labelString: 'ops/sec'
+									}
+								}]
 	      			},
 							animation: false
 	          }
