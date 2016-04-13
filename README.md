@@ -2,6 +2,12 @@
 
 This repo is used to help measure performance of Metal.js, as well as compare it with other libraries like YUI and React.
 
+## Chart
+
+The following chart shows the latest test results while comparing a simple list component implemented using different libraries.
+
+![Chart](charts/all.png)
+
 ## Set Up
 1. Install NodeJS >= [v0.12.0](http://nodejs.org/dist/v0.12.0/), if you don't have it yet.
 2. Install global dependencies:
