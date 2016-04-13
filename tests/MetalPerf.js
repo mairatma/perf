@@ -9,9 +9,6 @@ window.MetalPerf = { // jshint ignore:line
 		YUI().use(['List'], function(Y) {
 			window.Y = Y;
 			suite
-				.on('start', function(event) {
-					document.querySelector('#' + event.target.name).textContent = 'Running';
-				})
 				.on('cycle', function(event) {
 					var text = String(event.target).substr(event.target.name.length + 3);
 					document.querySelector('#' + event.target.name).textContent = text;
